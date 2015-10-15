@@ -17,7 +17,7 @@ class AuthController extends BackController{
      * @return response
      */
     public function login(Request $request) {
-
+        
         $pass = true;
 
         if ($request->isMethod('POST')) {

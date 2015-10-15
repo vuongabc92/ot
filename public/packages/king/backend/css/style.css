@@ -1,7 +1,5 @@
 /* --------------------------------
-
 Primary style
-
 -------------------------------- */
 *, *::after, *::before{box-sizing: border-box;}
 html{font-size: 62.5%;}
@@ -610,8 +608,8 @@ body.auth{background-color:#3e454c;}
 .auth-container{width:100%;max-width:370px;margin:15% auto;}
 .auth-container>form{background-color:#fff;padding:20px 25px;}
 .auth-form-group{margin:10px 0;}
-.auth-field{height:45px;padding:5px 15px;border:solid 1px #eee;background-color:#eee;}
-.auth-field:focus{background-color:#f5f5f5;border-color:#007aff;}
+.auth-field{height:45px;padding:5px 15px;border:solid 1px #eee;background-color:#eee;outline:none;line-height:45px;vertical-align:middle;}
+.auth-field:focus{background-color:#f5f5f5;border-color:#f5f5f5;}
 button.auth-btn{height:45px;padding:0 !important;}
 .auth-btn>i.fa-arrow-right{font-size:18px;line-height:45px;vertical-align:middle;}
 .username{text-transform:capitalize;}

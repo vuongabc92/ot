@@ -3,9 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/reset.css') }}"> <!-- CSS reset -->
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/bootstrap.css') }}"> <!-- CSS reset -->
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/font-awesome.css') }}"> <!-- CSS reset -->
@@ -93,11 +90,10 @@
                     </ul>
                 </li>
                 <li class="has-children users">
-                    <a href="#0"><b class="fa fa-code-fork _tga _fs16"></b> <span>Roles</span></a>
+                    <a href="{{ route('backend_roles') }}"><b class="fa fa-code-fork _tga _fs16"></b> <span>Roles</span></a>
                     <ul>
-                        <li><a href="#0">All Roles</a></li>
-                        <li><a href="#0">Edit User</a></li>
-                        <li><a href="#0">Add User</a></li>
+                        <li><a href="{{ route('backend_roles') }}">All Roles</a></li>
+                        <li><a href="{{ route('backend_role_add') }}">Add User</a></li>
                     </ul>
                 </li>
             </ul>

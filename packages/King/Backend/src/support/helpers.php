@@ -289,3 +289,20 @@ if ( ! function_exists('nl2p')) {
         return preg_replace('#\R+#', '</p><p>', $string);
     }
 }
+
+if ( ! function_exists('time_format')) {
+    /**
+     * Format time to some type
+     * 
+     * @param string $time
+     * @param string $format
+     * 
+     * @return string
+     */
+    function time_format($time, $format) {
+        
+        $time = new \DateTime($time);
+        
+        return $time->format($format);
+    }
+}

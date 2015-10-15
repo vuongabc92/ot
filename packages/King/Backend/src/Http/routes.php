@@ -7,4 +7,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', ['as' => 'backend_dashboard', 'uses' => 'IndexController@index']);
 
     Route::get('/roles', ['as' => 'backend_roles', 'uses' => 'RoleController@index']);
+    Route::get('/role/add', ['as' => 'backend_role_add', 'uses' => 'RoleController@add']);
 });
