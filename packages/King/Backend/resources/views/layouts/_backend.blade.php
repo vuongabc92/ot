@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/reset.css') }}"> <!-- CSS reset -->
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/bootstrap.css') }}"> <!-- CSS reset -->
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/font-awesome.css') }}"> <!-- CSS reset -->
+        <link rel="stylesheet" href="{{ asset('packages/king/backend/css/common.css') }}"> <!-- Resource style -->
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/style.css') }}"> <!-- Resource style -->
         <script src="{{ asset('packages/king/backend/js/modernizr.js') }}"></script> <!-- Modernizr -->
 
@@ -33,7 +34,7 @@
                     <li class="has-children account">
                         <a href="#0">
                             <img src="{{ asset('packages/king/backend/images/cd-avatar.png') }}" alt="avatar">
-                            Account
+                            <span class="username">{{ user()->username }}</span>
                         </a>
 
                         <ul>
@@ -83,29 +84,18 @@
 
             <ul>
                 <li class="cd-label">Secondary</li>
-                <li class="has-children bookmarks">
-                    <a href="#0">Bookmarks</a>
-
-                    <ul>
-                        <li><a href="#0">All Bookmarks</a></li>
-                        <li><a href="#0">Edit Bookmark</a></li>
-                        <li><a href="#0">Import Bookmark</a></li>
-                    </ul>
-                </li>
-                <li class="has-children images">
-                    <a href="#0">Images</a>
-
-                    <ul>
-                        <li><a href="#0">All Images</a></li>
-                        <li><a href="#0">Edit Image</a></li>
-                    </ul>
-                </li>
-
                 <li class="has-children users">
-                    <a href="#0">Users</a>
-
+                    <a href="#0"><b class="fa fa-user _tga _fs16"></b> <span>Users</span></a>
                     <ul>
                         <li><a href="#0">All Users</a></li>
+                        <li><a href="#0">Edit User</a></li>
+                        <li><a href="#0">Add User</a></li>
+                    </ul>
+                </li>
+                <li class="has-children users">
+                    <a href="#0"><b class="fa fa-code-fork _tga _fs16"></b> <span>Roles</span></a>
+                    <ul>
+                        <li><a href="#0">All Roles</a></li>
                         <li><a href="#0">Edit User</a></li>
                         <li><a href="#0">Add User</a></li>
                     </ul>
@@ -119,7 +109,9 @@
         </nav>
 
         <div class="content-wrapper">
-            <h1>Responsive Sidebar Navigation</h1>
+            <div class="_fwfl _mt20">
+                @yield('content')
+            </div>
         </div> <!-- .content-wrapper -->
     </main> <!-- .cd-main-content -->
     <script src="{{ asset('packages/king/backend/js/jquery-2.1.4.js') }}"></script>
