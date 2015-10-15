@@ -1,0 +1,10 @@
+/vendor
+/node_modules
+/storage
+/node_modules
+/nbproject
+/tests
+Homestead.yaml
+Homestead.json
+composer.lock
+.env
