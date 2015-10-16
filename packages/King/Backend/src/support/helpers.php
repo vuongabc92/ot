@@ -293,16 +293,45 @@ if ( ! function_exists('nl2p')) {
 if ( ! function_exists('time_format')) {
     /**
      * Format time to some type
-     * 
+     *
      * @param string $time
      * @param string $format
-     * 
+     *
      * @return string
      */
     function time_format($time, $format) {
-        
+
         $time = new \DateTime($time);
-        
+
         return $time->format($format);
     }
+}
+
+if ( ! function_exists('error_or_label')) {
+
+    /**
+     * Show label or error message of validation form field
+     *
+     * @param string $label
+     * @param string $error
+     *
+     * @return string
+     */
+    function error_or_label($label, $error) {
+
+        $errors = Session::get('errors');
+
+        if ($errors === null) {
+            return $label;
+        }
+
+        $message = $errors->all->first($error);
+
+        if ($message === '') {
+            return $label;
+        } else {
+            return '<span class="_tr5">' . $message . '</span>';
+        }
+    }
+
 }

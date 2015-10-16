@@ -82,7 +82,10 @@
             <ul>
                 <li class="cd-label">Secondary</li>
                 <li class="has-children users">
-                    <a href="#0"><b class="fa fa-user _tga _fs16"></b> <span>Users</span></a>
+                    <a href="#0">
+                        <b class="glyphicon glyphicon-user"></b>
+                        <span>Users</span>
+                    </a>
                     <ul>
                         <li><a href="#0">All Users</a></li>
                         <li><a href="#0">Edit User</a></li>
@@ -90,10 +93,13 @@
                     </ul>
                 </li>
                 <li class="has-children users">
-                    <a href="{{ route('backend_roles') }}"><b class="fa fa-code-fork _tga _fs16"></b> <span>Roles</span></a>
+                    <a href="{{ route('backend_roles') }}">
+                        <b class="fa fa-code-fork"></b>
+                        <span>{{ _t('backend_roles') }}</span>
+                    </a>
                     <ul>
-                        <li><a href="{{ route('backend_roles') }}">All Roles</a></li>
-                        <li><a href="{{ route('backend_role_add') }}">Add User</a></li>
+                        <li><a href="{{ route('backend_roles') }}">{{ _t('backend_role_all') }}</a></li>
+                        <li><a href="{{ route('backend_role_add') }}">{{ _t('backend_role_new') }}</a></li>
                     </ul>
                 </li>
             </ul>

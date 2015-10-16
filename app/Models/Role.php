@@ -17,28 +17,37 @@ class Role extends Base {
 
     /**
      * Validation rules
-     * 
+     *
      * @return array
      */
     public function rules() {
         return [
             'name' => 'required|max:32',
-            'role' => 'required|max:32|unique:role,role',
+            'role' => 'required|max:32|unique:roles,role',
         ];
     }
-    
+
     /**
      * Validation rule messages
-     * 
+     *
      * @return array
      */
     public function messages() {
         return [
-            'name.required' => 'Name is required.',
-            'name.max'      => 'Name is too long (32).',
-            'role.required' => 'Role is required.',
-            'role.max'      => 'Role is too long (32).',
-            'role.unique'   => 'Role had already used.',
+            'name.required' => _t('backend_role_msg_name_req'),
+            'name.max'      => _t('backend_role_msg_name_max'),
+            'role.required' => _t('backend_role_msg_role_req'),
+            'role.max'      => _t('backend_role_msg_role_max'),
+            'role.unique'   => _t('backend_role_msg_role_exist'),
         ];
+    }
+
+    /**
+     * Users
+     *
+     * @return App\Models\User
+     */
+    public function users() {
+        return $this->hasMany('App\Models\User');
     }
 }
