@@ -11,4 +11,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/role/{id}/edit', ['as' => 'backend_role_edit', 'uses' => 'RoleController@edit']);
     Route::get('/role/{id}/delete/{token}', ['as' => 'backend_role_delete', 'uses' => 'RoleController@delete']);
     Route::post('/role/save', ['as' => 'backend_role_save', 'uses' => 'RoleController@save']);
+
+    Route::get('/users', ['as' => 'backend_users', 'uses' => 'UserController@index']);
 });

@@ -14,8 +14,8 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>{{ _t('backend_role_name') }}</th>
-            <th>{{ _t('backend_role') }}</th>
+            <th>{{ _t('backend_auth_uname') }}</th>
+            <th>{{ _t('backend_auth_email') }}</th>
             <th width="50px">{{ _t('backend_common_status') }}</th>
             <th width="120px">{{ _t('backend_common_last') }}</th>
             <th width="130px">{{ _t('backend_common_actions') }}</th>
@@ -23,23 +23,23 @@
     </thead>
     <tbody>
         @set $i = 0
-        @foreach($roles as $role)
+        @foreach($users as $user)
             @set $i = $i + 1
         <tr>
             <td>{{ $i }}</td>
-            <td>{{ $role->name }}</td>
-            <td>{{ $role->role }}</td>
+            <td>{{ $user->username }}</td>
+            <td>{{ $user->email }}</td>
             <td>
-                @if($role->is_active)
+                @if($user->is_active)
                 <a class="label label-success _fs11 _r2" href="#">{{ _t('backend_common_active') }}</a>
                 @else
                 <a class="label label-danger _fs11 _r2" href="#">{{ _t('backend_common_disable') }}</a>
                 @endif
             </td>
-            <td>{{ time_format($role->updated_at, 'd/m/Y') }}</td>
+            <td>{{ time_format($user->updated_at, 'd/m/Y') }}</td>
             <td>
-                <a href="{{ route('backend_role_edit', $role->id) }}" class="btn btn-warning btn-sm _r2">{{ _t('backend_common_edit') }}</a>
-                <a href="{{ route('backend_role_delete', ['id' => $role->id, 'token' => csrf_token()]) }}" class="btn btn-danger btn-sm _r2" onclick="return confirm('{{ _t('backend_role_delete_one') }}')">{{ _t('backend_common_delete') }}</a>
+                <a href="{ route('backend_role_edit', $role->id) }" class="btn btn-warning btn-sm _r2">{{ _t('backend_common_edit') }}</a>
+                <a href="{ route('backend_role_delete', ['id' => $role->id, 'token' => csrf_token()]) }" class="btn btn-danger btn-sm _r2" onclick="return confirm('{{ _t('backend_role_delete_one') }}')">{{ _t('backend_common_delete') }}</a>
             </td>
         </tr>
         @endforeach
