@@ -50,4 +50,12 @@ class PostCategory extends Base {
         ];
     }
 
+    /**
+     * Posts
+     *
+     * @return App\Models\PostCategory
+     */
+    public function posts() {
+        return $this->hasMany('App\Models\Post');
+    }
 }

@@ -49,6 +49,10 @@ return [
     'backend_pc_new' => 'Add new category',
     'backend_pc_delete_one' => 'Are you sure to delete this category?',
 
+    'backend_post_msg_nareq' => 'Name is required.',
+    'backend_post_msg_namax' => 'Name is too long.',
+    'backend_post_msg_coreq' => 'Content is required.',
+
     'backend_common_save' => 'Save',
     'backend_common_edit' => 'Edit',
     'backend_common_delete' => 'Delete',

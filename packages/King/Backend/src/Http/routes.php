@@ -29,4 +29,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/post-category/{id}/delete/{token}', ['as' => 'backend_pc_delete', 'uses' => 'PostCategoryController@delete']);
     Route::get('/post-category/{id}/toggle-show-hide', ['as' => 'backend_pc_active', 'uses' => 'PostCategoryController@toggleShowHide']);
 
+    Route::get('/p/{slug}', ['as' => 'backend_posts', 'uses' => 'PostCategoryController@index']);
 });
