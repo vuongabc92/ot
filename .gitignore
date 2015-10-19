@@ -5,6 +5,7 @@
 /nbproject
 /tests
 /public/uploads/avatar
+/public/uploads/posts
 Homestead.yaml
 Homestead.json
 composer.lock
