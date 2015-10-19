@@ -292,7 +292,7 @@ Sidebar
 Auth page
 -------------------------------- */
 body.auth{background-color:#3e454c;}
-.auth-container{width:100%;max-width:370px;margin:15% auto;}
+.auth-container{width:100%;max-width:370px;margin:12% auto;}
 .auth-container>form{background-color:#fff;padding:20px 25px;}
 .auth-form-group{margin:10px 0;}
 .auth-field{height:45px;padding:5px 15px;border:solid 1px #eee;background-color:#eee;outline:none;line-height:45px;vertical-align:middle;}
@@ -303,3 +303,7 @@ button.auth-btn{height:45px;padding:0 !important;}
 .cd-side-nav>ul>li>a>b{width:20px;font-size:19px;color:#aaa;}
 .cd-side-nav>ul>li>a>span{margin-left:10px;}
 .add-title{text-transform:capitalize;}
+.default-user-avatar{width:35px;height:35px;float:left;background-color:#eee;border:solid 1px #e3e3e3;text-align:center;}
+.default-user-avatar>i{height:35px;line-height:35px;font-size:13px;vertical-align:middle;color:#777;}
+.user-avatar-list{height:35px;line-height:35px;}
+.avatar-header{height:20px;width:20px;position:absolute;left:1.8em;top:50%;margin-top:-10px;bottom:auto;color:#777;font-size:10px;padding:4px;}

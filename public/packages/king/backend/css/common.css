@@ -116,6 +116,7 @@ button._btn-sm{height: 30px;line-height:17px;}
 ._tdn{text-decoration: none;}
 ._tdu{text-decoration: underline;}
 ._tdt{text-decoration: line-through;}
+._tc{text-align:center}
 
 ._bgw{background-color: #fff;}
 
@@ -392,3 +393,4 @@ button._btn-sm{height: 30px;line-height:17px;}
 /* Tooltip */
 .tooltip-inner{padding:4px 8px;border-radius:2px;-webkit-border-radius:2px;
 -moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;}
+.alert-success {color: #249224;background-color:#D7FDC7;border-color:#5CB85C;}

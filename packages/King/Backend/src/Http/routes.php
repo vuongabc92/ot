@@ -6,11 +6,17 @@ Route::match(['get', 'post'], 'auth/logout', ['as' => 'backend_logout', 'uses' =
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', ['as' => 'backend_dashboard', 'uses' => 'IndexController@index']);
 
+    //Role
     Route::get('/roles', ['as' => 'backend_roles', 'uses' => 'RoleController@index']);
     Route::get('/role/add', ['as' => 'backend_role_add', 'uses' => 'RoleController@add']);
     Route::get('/role/{id}/edit', ['as' => 'backend_role_edit', 'uses' => 'RoleController@edit']);
     Route::get('/role/{id}/delete/{token}', ['as' => 'backend_role_delete', 'uses' => 'RoleController@delete']);
     Route::post('/role/save', ['as' => 'backend_role_save', 'uses' => 'RoleController@save']);
+    Route::get('/role/{id}/toggle-show-hide', ['as' => 'backend_role_active', 'uses' => 'RoleController@toggleShowHide']);
 
     Route::get('/users', ['as' => 'backend_users', 'uses' => 'UserController@index']);
+    Route::get('/users/{role_id}/by-role', ['as' => 'backend_users_by_role', 'uses' => 'UserController@usersByRole']);
+    Route::get('/user/add', ['as' => 'backend_user_add', 'uses' => 'UserController@add']);
+    Route::get('/user/{id}/edit', ['as' => 'backend_user_edit', 'uses' => 'UserController@edit']);
+    Route::post('/user/save', ['as' => 'backend_user_save', 'uses' => 'UserController@save']);
 });

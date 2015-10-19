@@ -125,6 +125,28 @@ class RoleController extends BackController{
 
         return redirect(route('backend_roles'))->with('success', _t('backend_common_deleted'));
     }
+    
+    /**
+     * Toggle show hide role
+     * 
+     * @param int $id
+     * 
+     * @return response
+     */
+    public function toggleShowHide($id) {
+        
+        $role = $this->_getRoleById($id);
+        
+        if ($role->is_active) {
+            $role->is_active = false;
+        } else {
+            $role->is_active = true;
+        }
+        
+        $role->save();
+        
+        return redirect(route('backend_roles'));
+    }
 
     /**
      * Get role by id

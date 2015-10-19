@@ -6,6 +6,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
+use App\Helpers\Upload;
+use App\Helpers\FileName;
+use App\Helpers\Image;
 use Validator;
 
 /**
@@ -36,7 +40,26 @@ class UserController extends BackController{
         $users = User::all();
 
         return view('backend::user.index', [
-            'users' => $users
+            'users'       => $users,
+            'avatar_path' => config('back.avatar_path')
+        ]);
+    }
+    
+    /**
+     * List all users
+     *
+     * @return response
+     */
+    public function usersByRole($role_id) {
+        
+        $role = Role::find($role_id);
+        if ($role === null) {
+            throw new NotFoundHttpException;
+        }
+        
+        return view('backend::user.index', [
+            'users'       => $role->users,
+            'avatar_path' => config('back.avatar_path')
         ]);
     }
 
@@ -46,8 +69,16 @@ class UserController extends BackController{
      * @return response
      */
     public function add() {
+        
+        $roles = ['' => _t('backend_user_select_role')];
+        
+        foreach (Role::all() as $role) {
+            $roles[$role->id] = $role->name;
+        }
+        
         return view('backend::user.form', [
-            'user'   => $this->user
+            'user'  => $this->user,
+            'roles' => $roles,
         ]);
     }
 
@@ -58,8 +89,15 @@ class UserController extends BackController{
      */
     public function edit($id) {
 
+        $roles = ['' => _t('backend_user_select_role')];
+        
+        foreach (Role::all() as $role) {
+            $roles[$role->id] = $role->name;
+        }
+        
         return view('backend::user.form', [
-            'user' => $this->_getUserById($id),
+            'user'  => $this->_getUserById($id),
+            'roles' => $roles,
         ]);
     }
 
@@ -81,8 +119,16 @@ class UserController extends BackController{
             $rules    = $this->user->rules();
             $messages = $this->user->messages();
 
-            if ($edit && str_equal($user->user, $request->get('user'))) {
-                $rules = remove_rules($rules, ['user.unique:users,user']);
+            if ($edit && str_equal($user->username, $request->get('username'))) {
+                $rules = remove_rules($rules, ['username.unique:users,username']);
+            }
+            
+            if ($edit && str_equal($user->email, $request->get('email'))) {
+                $rules = remove_rules($rules, ['email.unique:users,email']);
+            }
+            
+            if ($edit) {
+                $rules = remove_rules($rules, ['password.required']);
             }
 
             $validator = Validator::make($request->all(), $rules, $messages);
@@ -92,9 +138,33 @@ class UserController extends BackController{
             }
 
             try {
-                $user = $this->bind($user, $request->all());
+                $except = [];
+                if ($request->password === '') {
+                    $except = ['password'];
+                }
+                
+                $user = $this->bind($user, $request->all(), $except);
                 if ( ! $edit) {$user->created_at = new \DateTime();}
                 $user->updated_at = new \DateTime();
+                
+                //Upload avatar
+                if ($request->hasFile('avatar')) {
+                    $avatarPath = config('back.avatar_path');
+                    $file       = $request->file('avatar');
+                    $filename   = new FileName($avatarPath, $file->getClientOriginalExtension());
+                    $filename->avatar()->generate();
+                    $filename->setPrefix(_const('AVATAR_PREFIX'));
+                    $filename->avatar()->group($this->_getAvatarGroup(), false);
+                    $upload = new Upload($file);
+                    $upload->setDirectory($avatarPath)->setName($filename->getName())->move();
+                    $image = new Image($avatarPath . $upload->getName());
+                    $image->setDirectory($avatarPath)->resizeGroup($filename->getGroup());
+                    delete_file($avatarPath . $upload->getName());
+
+                    $resizes      = $image->getResizes();
+                    $user->avatar = $resizes['small'];
+                }
+                
                 $user->save();
 
             } catch (Exception $ex) {
@@ -143,5 +213,19 @@ class UserController extends BackController{
         }
 
         return $user;
+    }
+    
+    /**
+     * Avatar group to resize
+     *
+     * @return array
+     */
+    protected function _getAvatarGroup() {
+        return [
+            'small' => [
+                'width' => _const('AVATAR_SMALL'),
+                'height' => _const('AVATAR_SMALL')
+            ]
+        ];
     }
 }

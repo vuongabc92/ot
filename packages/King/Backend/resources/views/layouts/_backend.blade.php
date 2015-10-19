@@ -30,7 +30,11 @@
                     <li><a href="#0">Support</a></li>
                     <li class="has-children account">
                         <a href="#0">
-                            <img src="{{ asset('packages/king/backend/images/cd-avatar.png') }}" alt="avatar">
+                            @if (check_file(config('back.avatar_path') . user()->avatar)) 
+                                <img src="{{ asset(config('back.avatar_path') . user()->avatar) }}" alt="avatar">
+                            @else
+                                <b class="default-user-avatar avatar-header _r50 fa fa-image"></b>
+                            @endif
                             <span class="username">{{ user()->username }}</span>
                         </a>
 

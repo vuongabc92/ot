@@ -27,13 +27,13 @@
             @set $i = $i + 1
         <tr>
             <td>{{ $i }}</td>
-            <td>{{ $role->name }}</td>
+            <td><a href="{{route('backend_users_by_role', $role->id) }}">{{ $role->name }}</a></td>
             <td>{{ $role->role }}</td>
             <td>
                 @if($role->is_active)
-                <a class="label label-success _fs11 _r2" href="#">{{ _t('backend_common_active') }}</a>
+                <a class="label label-success _fs11 _r2" href="{{ route('backend_role_active', $role->id) }}">{{ _t('backend_common_active') }}</a>
                 @else
-                <a class="label label-danger _fs11 _r2" href="#">{{ _t('backend_common_disable') }}</a>
+                <a class="label label-danger _fs11 _r2" href="{{ route('backend_role_active', $role->id) }}">{{ _t('backend_common_disable') }}</a>
                 @endif
             </td>
             <td>{{ time_format($role->updated_at, 'd/m/Y') }}</td>
