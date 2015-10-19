@@ -21,11 +21,19 @@
     <div class="form-group">
         <label for="role_id">{!! error_or_label( _t('backend_role'), 'role_id') !!}</label>
         {!! Form::select('role_id', $roles, $user->role_id, ['class' => 'form-control _r2', 'id' => 'role_id']) !!}
-    </div>  
+    </div>
     <div class="form-group">
         <label for="avatar">{!! error_or_label( _t('backend_user_avatar'), 'avatar') !!}</label>
-        {!! Form::file('avatar', ['class' => 'form-control _r2', 'id' => 'avatar', 'accept' => 'image/*']) !!}
-    </div>  
+        <div class="_fw">
+            @if($user->id !== null && check_file(config('back.avatar_path') . $user->avatar))
+                <img src="{{ asset(config('back.avatar_path') . $user->avatar) }}" class="user-avatar-edit img-responsive img-circle"/>
+            @endif
+        </div>
+        <div class="_fw _mt5">
+            {!! Form::file('avatar', ['class' => '', 'id' => 'avatar', 'accept' => 'image/*']) !!}
+        </div>
+        <hr />
+    </div>
     <button type="submit" class="btn btn-default _r2">{{ _t('backend_common_save') }}</button>
 {!! Form::close() !!}
 

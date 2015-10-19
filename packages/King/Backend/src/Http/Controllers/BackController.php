@@ -15,6 +15,15 @@ use App\Http\Controllers\Controller;
  */
 class BackController extends Controller
 {
+    /**
+     * Binding
+     *
+     * @param object $entity Entity to be bind data from user form
+     * @param array  $fields Form data
+     * @param array  $except Fields that won't be set data
+     *
+     * @return type
+     */
     public function bind($entity, $fields, $except = []) {
 
         $except += config('back.except_fields');

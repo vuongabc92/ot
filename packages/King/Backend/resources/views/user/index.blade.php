@@ -31,7 +31,7 @@
             <td>{{ $i }}</td>
             <td>
                 @if( ! check_file($avatar_path . $user->avatar))
-                    <span class="default-user-avatar _r50"><i class="fa fa-image"></i></span>
+                    <span class="default-user-avatar _r50 fa fa-image"></span>
                 @else
                     <img src="{{ asset($avatar_path . $user->avatar) }}" class="user-avatar-list img-responsive img-circle"/>
                 @endif
@@ -41,21 +41,24 @@
             <td>{{ $user->role->name }}</td>
             <td>
                 @if($user->is_active)
-                <a class="label label-success _fs11 _r2" href="#">{{ _t('backend_common_active') }}</a>
+                <a class="label label-success _fs11 _r2" href="{{ route('backend_user_active', $user->id) }}">{{ _t('backend_common_active') }}</a>
                 @else
-                <a class="label label-danger _fs11 _r2" href="#">{{ _t('backend_common_disable') }}</a>
+                <a class="label label-danger _fs11 _r2" href="{{ route('backend_user_active', $user->id) }}">{{ _t('backend_common_disable') }}</a>
                 @endif
             </td>
             <td>{{ time_format($user->updated_at, 'd/m/Y') }}</td>
             <td>
-                <a href="{{ route('backend_user_edit', $user->id) }}" class="btn btn-warning btn-sm _r2">{{ _t('backend_common_edit') }}</a>
-                <a href="{ route('backend_role_delete', ['id' => $role->id, 'token' => csrf_token()]) }" class="btn btn-danger btn-sm _r2" onclick="return confirm('{{ _t('backend_role_delete_one') }}')">{{ _t('backend_common_delete') }}</a>
+                <a href="{{ route('backend_user_edit', $user->id) }}" class="btn btn-warning btn-sm _r2 _mb3">{{ _t('backend_common_edit') }}</a>
+                <a href="{{ route('backend_user_delete', ['id' => $user->id, 'token' => csrf_token()]) }}" class="btn btn-danger btn-sm _r2" onclick="return confirm('{{ _t('backend_role_delete_one') }}')">{{ _t('backend_common_delete') }}</a>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
 <div class="_fwfl">
-    <a class="btn btn-default _r2" href="{{ route('backend_user_add') }}">{{ _t('backend_user_new') }}</a>
+    <a class="btn btn-default _r2 _fl" href="{{ route('backend_user_add') }}">{{ _t('backend_user_new') }}</a>
+    <div class="_fr">
+        {!! $users->render() !!}
+    </div>
 </div>
 @stop

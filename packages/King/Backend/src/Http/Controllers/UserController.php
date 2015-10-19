@@ -37,28 +37,30 @@ class UserController extends BackController{
      */
     public function index() {
 
-        $users = User::all();
+        $users = User::paginate(config('back.default_pagination'));
 
         return view('backend::user.index', [
             'users'       => $users,
             'avatar_path' => config('back.avatar_path')
         ]);
     }
-    
+
     /**
      * List all users
      *
      * @return response
      */
     public function usersByRole($role_id) {
-        
+
         $role = Role::find($role_id);
         if ($role === null) {
             throw new NotFoundHttpException;
         }
-        
+
+        $users = User::where('role_id', $role_id)->paginate(config('back.default_pagination'));
+
         return view('backend::user.index', [
-            'users'       => $role->users,
+            'users'       => $users,
             'avatar_path' => config('back.avatar_path')
         ]);
     }
@@ -69,13 +71,13 @@ class UserController extends BackController{
      * @return response
      */
     public function add() {
-        
+
         $roles = ['' => _t('backend_user_select_role')];
-        
+
         foreach (Role::all() as $role) {
             $roles[$role->id] = $role->name;
         }
-        
+
         return view('backend::user.form', [
             'user'  => $this->user,
             'roles' => $roles,
@@ -90,11 +92,11 @@ class UserController extends BackController{
     public function edit($id) {
 
         $roles = ['' => _t('backend_user_select_role')];
-        
+
         foreach (Role::all() as $role) {
             $roles[$role->id] = $role->name;
         }
-        
+
         return view('backend::user.form', [
             'user'  => $this->_getUserById($id),
             'roles' => $roles,
@@ -122,11 +124,11 @@ class UserController extends BackController{
             if ($edit && str_equal($user->username, $request->get('username'))) {
                 $rules = remove_rules($rules, ['username.unique:users,username']);
             }
-            
+
             if ($edit && str_equal($user->email, $request->get('email'))) {
                 $rules = remove_rules($rules, ['email.unique:users,email']);
             }
-            
+
             if ($edit) {
                 $rules = remove_rules($rules, ['password.required']);
             }
@@ -142,11 +144,11 @@ class UserController extends BackController{
                 if ($request->password === '') {
                     $except = ['password'];
                 }
-                
+
                 $user = $this->bind($user, $request->all(), $except);
                 if ( ! $edit) {$user->created_at = new \DateTime();}
                 $user->updated_at = new \DateTime();
-                
+
                 //Upload avatar
                 if ($request->hasFile('avatar')) {
                     $avatarPath = config('back.avatar_path');
@@ -164,7 +166,7 @@ class UserController extends BackController{
                     $resizes      = $image->getResizes();
                     $user->avatar = $resizes['small'];
                 }
-                
+
                 $user->save();
 
             } catch (Exception $ex) {
@@ -197,6 +199,28 @@ class UserController extends BackController{
     }
 
     /**
+     * Toggle show hide user
+     *
+     * @param int $id
+     *
+     * @return response
+     */
+    public function toggleShowHide($id) {
+
+        $user = $this->_getUserById($id);
+
+        if ($user->is_active) {
+            $user->is_active = false;
+        } else {
+            $user->is_active = true;
+        }
+
+        $user->save();
+
+        return redirect(route('backend_users'));
+    }
+
+    /**
      * Get user by id
      *
      * @param int $id
@@ -214,7 +238,7 @@ class UserController extends BackController{
 
         return $user;
     }
-    
+
     /**
      * Avatar group to resize
      *

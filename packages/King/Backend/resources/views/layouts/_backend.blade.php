@@ -30,7 +30,7 @@
                     <li><a href="#0">Support</a></li>
                     <li class="has-children account">
                         <a href="#0">
-                            @if (check_file(config('back.avatar_path') . user()->avatar)) 
+                            @if (check_file(config('back.avatar_path') . user()->avatar))
                                 <img src="{{ asset(config('back.avatar_path') . user()->avatar) }}" alt="avatar">
                             @else
                                 <b class="default-user-avatar avatar-header _r50 fa fa-image"></b>
@@ -86,14 +86,13 @@
             <ul>
                 <li class="cd-label">Secondary</li>
                 <li class="has-children users">
-                    <a href="#0">
+                    <a href="{{ route('backend_users') }}">
                         <b class="glyphicon glyphicon-user"></b>
                         <span>Users</span>
                     </a>
                     <ul>
-                        <li><a href="#0">All Users</a></li>
-                        <li><a href="#0">Edit User</a></li>
-                        <li><a href="#0">Add User</a></li>
+                        <li><a href="{{ route('backend_users') }}">{{ _t('backend_user_all') }}</a></li>
+                        <li><a href="{{ route('backend_user_add') }}">{{ _t('backend_user_new') }}</a></li>
                     </ul>
                 </li>
                 <li class="has-children users">
@@ -115,7 +114,7 @@
         </nav>
 
         <div class="content-wrapper">
-            <div class="_fwfl _mt20">
+            <div class="_fwfl _mt20 king-content">
                 @yield('content')
             </div>
         </div> <!-- .content-wrapper -->

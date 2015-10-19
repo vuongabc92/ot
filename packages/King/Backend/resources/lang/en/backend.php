@@ -14,19 +14,21 @@ return [
     'backend_role' => 'Role',
     'backend_role_name' => 'Name',
     'backend_role_new' => 'Add new role',
-    'backend_role_all' => 'All roles',
+    'backend_role_all' => 'All Roles',
     'backend_role_msg_name_req' => 'Name is required.',
     'backend_role_msg_name_max' => 'Name is too long (32).',
     'backend_role_msg_role_req' => 'Role is required.',
     'backend_role_msg_role_max' => 'Role is too long (32).',
     'backend_role_msg_role_exist' => 'Role had already used.',
     'backend_role_delete_one' => 'Becareful!! Delete user and all relative users?',
-    
+
+    'backend_user_all' => 'All Users',
     'backend_user_list' => 'List All Users',
     'backend_user_new' => 'Add new user',
     'backend_user_avatar' => 'Avatar',
     'backend_user_select_role' => 'Please select role',
-    
+    'backend_user_delete_one' => 'Are you sure to delete this user?',
+
     'backend_user_msg_unreq' => 'User name is required.',
     'backend_user_msg_unmax' => 'User name is too long (32).',
     'backend_user_msg_ununi' => 'User name had already used.',
@@ -40,7 +42,13 @@ return [
     'backend_user_msg_roexi' => 'Role is not exists.',
     'backend_user_msg_avmax' => 'Avatar is too long (250).',
     'backend_user_msg_avimg' => 'Avatar must be an image format.',
-    
+
+    'backend_pc_list' => 'List All Categories',
+    'backend_pc_name' => 'Name',
+    'backend_pc_slug' => 'Slug',
+    'backend_pc_new' => 'Add new category',
+    'backend_pc_delete_one' => 'Are you sure to delete this category?',
+
     'backend_common_save' => 'Save',
     'backend_common_edit' => 'Edit',
     'backend_common_delete' => 'Delete',

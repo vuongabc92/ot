@@ -38,7 +38,7 @@
             </td>
             <td>{{ time_format($role->updated_at, 'd/m/Y') }}</td>
             <td>
-                <a href="{{ route('backend_role_edit', $role->id) }}" class="btn btn-warning btn-sm _r2">{{ _t('backend_common_edit') }}</a>
+                <a href="{{ route('backend_role_edit', $role->id) }}" class="btn btn-warning btn-sm _r2 _mb3">{{ _t('backend_common_edit') }}</a>
                 <a href="{{ route('backend_role_delete', ['id' => $role->id, 'token' => csrf_token()]) }}" class="btn btn-danger btn-sm _r2" onclick="return confirm('{{ _t('backend_role_delete_one') }}')">{{ _t('backend_common_delete') }}</a>
             </td>
         </tr>

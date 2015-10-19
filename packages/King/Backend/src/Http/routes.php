@@ -19,4 +19,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/user/add', ['as' => 'backend_user_add', 'uses' => 'UserController@add']);
     Route::get('/user/{id}/edit', ['as' => 'backend_user_edit', 'uses' => 'UserController@edit']);
     Route::post('/user/save', ['as' => 'backend_user_save', 'uses' => 'UserController@save']);
+    Route::get('/user/{id}/delete/{token}', ['as' => 'backend_user_delete', 'uses' => 'UserController@delete']);
+    Route::get('/user/{id}/toggle-show-hide', ['as' => 'backend_user_active', 'uses' => 'UserController@toggleShowHide']);
+
+    Route::get('/post-categories', ['as' => 'backend_post_categories', 'uses' => 'PostCategoryController@index']);
+    Route::get('/post-category/add', ['as' => 'backend_pc_add', 'uses' => 'PostCategoryController@add']);
+    Route::get('/post-category/{id}/edit', ['as' => 'backend_pc_edit', 'uses' => 'PostCategoryController@edit']);
+    Route::post('/post-category/save', ['as' => 'backend_pc_save', 'uses' => 'PostCategoryController@save']);
+    Route::get('/post-category/{id}/delete/{token}', ['as' => 'backend_pc_delete', 'uses' => 'PostCategoryController@delete']);
+    Route::get('/post-category/{id}/toggle-show-hide', ['as' => 'backend_pc_active', 'uses' => 'PostCategoryController@toggleShowHide']);
+
 });
