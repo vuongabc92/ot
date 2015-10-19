@@ -22,8 +22,9 @@ class Post extends Base {
      */
     public function rules() {
         return [
-            'name'        => 'required|max:250',
-            'content'     => 'required',
+            'name'    => 'required|max:250',
+            'content' => 'required',
+            'image'   => 'required|image',
         ];
     }
 
@@ -37,6 +38,8 @@ class Post extends Base {
             'name.required'    => _t('backend_post_msg_nareq'),
             'name.max'         => _t('backend_post_msg_namax'),
             'content.required' => _t('backend_post_msg_coreq'),
+            'image.required'   => _t('backend_post_msg_imgreq'),
+            'image.image'      => _t('backend_post_msg_image'),
         ];
     }
 

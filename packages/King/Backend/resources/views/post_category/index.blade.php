@@ -36,7 +36,7 @@
                 @endif
             </td>
             <td>
-                <a href="{{ route('backend_pc_edit', $category->id) }}" class="btn btn-warning btn-sm _r2 _mb3">{{ _t('backend_common_edit') }}</a>
+                <a href="{{ route('backend_pc_edit', $category->id) }}" class="btn btn-warning btn-sm _r2">{{ _t('backend_common_edit') }}</a>
                 <a href="{{ route('backend_pc_delete', ['id' => $category->id, 'token' => csrf_token()]) }}" class="btn btn-danger btn-sm _r2" onclick="return confirm('{{ _t('backend_pc_delete_one') }}')">{{ _t('backend_common_delete') }}</a>
             </td>
         </tr>

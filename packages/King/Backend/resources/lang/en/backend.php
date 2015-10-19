@@ -48,10 +48,19 @@ return [
     'backend_pc_slug' => 'Slug',
     'backend_pc_new' => 'Add new category',
     'backend_pc_delete_one' => 'Are you sure to delete this category?',
-
+    
+    'backend_post_list' => 'List All Posts',
+    'backend_post_name' => 'Name',
+    'backend_post_image' => 'Image',
+    'backend_post_content' => 'Content',
+    'backend_post_short_content' => 'Short content',
+    'backend_post_new' => 'Add new post',
     'backend_post_msg_nareq' => 'Name is required.',
     'backend_post_msg_namax' => 'Name is too long.',
     'backend_post_msg_coreq' => 'Content is required.',
+    'backend_post_msg_imgreq' => 'Image is required.',
+    'backend_post_msg_image' => 'Image must be an image format.',
+    'backend_post_delete_one' => 'Are you sure to delete this category?',
 
     'backend_common_save' => 'Save',
     'backend_common_edit' => 'Edit',

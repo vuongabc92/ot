@@ -31,7 +31,7 @@
             <td>{{ $i }}</td>
             <td>
                 @if( ! check_file($avatar_path . $user->avatar))
-                    <span class="default-user-avatar _r50 fa fa-image"></span>
+                    <span class="default-image default-avatar _r50 fa fa-image"></span>
                 @else
                     <img src="{{ asset($avatar_path . $user->avatar) }}" class="user-avatar-list img-responsive img-circle"/>
                 @endif
@@ -48,7 +48,7 @@
             </td>
             <td>{{ time_format($user->updated_at, 'd/m/Y') }}</td>
             <td>
-                <a href="{{ route('backend_user_edit', $user->id) }}" class="btn btn-warning btn-sm _r2 _mb3">{{ _t('backend_common_edit') }}</a>
+                <a href="{{ route('backend_user_edit', $user->id) }}" class="btn btn-warning btn-sm _r2">{{ _t('backend_common_edit') }}</a>
                 <a href="{{ route('backend_user_delete', ['id' => $user->id, 'token' => csrf_token()]) }}" class="btn btn-danger btn-sm _r2" onclick="return confirm('{{ _t('backend_role_delete_one') }}')">{{ _t('backend_common_delete') }}</a>
             </td>
         </tr>

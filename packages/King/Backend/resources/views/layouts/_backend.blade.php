@@ -33,7 +33,7 @@
                             @if (check_file(config('back.avatar_path') . user()->avatar))
                                 <img src="{{ asset(config('back.avatar_path') . user()->avatar) }}" alt="avatar">
                             @else
-                                <b class="default-user-avatar avatar-header _r50 fa fa-image"></b>
+                                <b class="default-avatar default-image avatar-header _r50 fa fa-image"></b>
                             @endif
                             <span class="username">{{ user()->username }}</span>
                         </a>

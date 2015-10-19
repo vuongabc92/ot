@@ -2,17 +2,26 @@
 
 @section('content')
 
-<h3 class="_tg6 _fs20 add-title">{{ _t('backend_role_new') }}</h3>
+<h3 class="_tg6 _fs20 add-title">{{ _t('backend_post_new') }}</h3>
 <hr />
-{!! Form::model($role, ['url' => route('backend_role_save'), 'role' => 'form']) !!}
-    @if($role->id !== null) {!! Form::hidden('id', $role->id) !!} @endif
+{!! Form::model($post, ['url' => route('backend_post_save', $slug), 'role' => 'form', 'files' => true]) !!}
+    @if($post->id !== null) {!! Form::hidden('id', $post->id) !!} @endif
     <div class="form-group">
-        <label for="name">{!! error_or_label( _t('backend_role_name'), 'name') !!}</label>
-        {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name', 'placeholder' => _t('backend_role_name')]) !!}
+        <label for="name">{!! error_or_label( _t('backend_post_name'), 'name') !!}</label>
+        {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name', 'placeholder' => _t('backend_post_name')]) !!}
     </div>
     <div class="form-group">
-        <label for="role">{!! error_or_label( _t('backend_role'), 'role') !!}</label>
-        {!! Form::text('role', null, ['class' => 'form-control', 'id' => 'role', 'placeholder' => _t('backend_role')]) !!}
+        <label for="image">{!! error_or_label( _t('backend_post_image'), 'image') !!}</label>
+        @if(check_file(config('back.post_path') . $post->image))
+            <img src="{{ asset(config('back.post_path') . $post->image) }}" class="post-image img-responsive img-rounded"/>
+        @endif
+        <div class="_mt5">
+            {!! Form::file('image') !!}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content">{!! error_or_label( _t('backend_post_content'), 'content') !!}</label>
+        {!! Form::textarea('content', null, ['class' => 'form-control', 'id' => 'content', 'placeholder' => _t('backend_post_content')]) !!}
     </div>
     <button type="submit" class="btn btn-default _r2">{{ _t('backend_common_save') }}</button>
 {!! Form::close() !!}
