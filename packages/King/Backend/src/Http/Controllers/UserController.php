@@ -118,6 +118,7 @@ class UserController extends BackController{
 
             $edit     = $request->has('id');
             $user     = ($edit) ? $this->_getUserById($request->get('id')) : $this->user;
+            $userCopy = clone $user;
             $rules    = $this->user->rules();
             $messages = $this->user->messages();
 
@@ -163,6 +164,10 @@ class UserController extends BackController{
                     $image->setDirectory($avatarPath)->resizeGroup($filename->getGroup());
                     delete_file($avatarPath . $upload->getName());
 
+                    if ($edit && check_file($avatarPath . $userCopy->image)) {
+                        delete_file($avatarPath . $userCopy->image);
+                    }
+
                     $resizes      = $image->getResizes();
                     $user->avatar = $resizes['small'];
                 }
@@ -192,7 +197,13 @@ class UserController extends BackController{
             throw new TokenMismatchException;
         }
 
-        $user = $this->_getUserById($id);
+        $user       = $this->_getUserById($id);
+        $avatarPath = config('back.avatar_path');
+        
+        if (check_file($avatarPath . $user->avatar)) {
+            delete_file($avatarPath . $user->avatar);
+        }
+
         $user->delete();
 
         return redirect(route('backend_users'))->with('success', _t('backend_common_deleted'));

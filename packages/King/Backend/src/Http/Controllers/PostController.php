@@ -36,7 +36,7 @@ class PostController extends BackController{
      * @return response
      */
     public function index($slug) {
-        
+
         $category   = $this->_getCategoryBySlug($slug);
         $posts      = $category->posts;
         $imagePath  = config('back.post_path');
@@ -54,9 +54,9 @@ class PostController extends BackController{
      * @return response
      */
     public function add($slug) {
-        
+
         $this->_getCategoryBySlug($slug);
-        
+
         return view('backend::post.form', [
             'post' => $this->post,
             'slug' => $slug
@@ -69,9 +69,9 @@ class PostController extends BackController{
      * @return response
      */
     public function edit($slug, $id) {
-        
+
         $this->_getCategoryBySlug($slug);
-        
+
         return view('backend::post.form', [
             'post' => $this->_getPostById($id),
             'slug' => $slug
@@ -89,19 +89,20 @@ class PostController extends BackController{
      * @throws \Exception
      */
     public function save(Request $request, $slug) {
-        
+
         if ($request->isMethod('POST')) {
-            
+
             $category = $this->_getCategoryBySlug($slug);
             $edit     = $request->has('id');
             $post     = ($edit) ? $this->_getPostById($request->get('id')) : $this->post;
+            $postCopy = clone $post;
             $rules    = $this->post->rules();
             $messages = $this->post->messages();
-            
+
             if ($edit && $post->image !== '') {
                 $rules = remove_rules($rules, 'image.required');
             }
-            
+
             $validator = Validator::make($request->all(), $rules, $messages);
 
             if ($validator->fails()) {
@@ -113,7 +114,7 @@ class PostController extends BackController{
                 if ( ! $edit) {$post->created_at = new \DateTime();}
                 $post->updated_at       = new \DateTime();
                 $post->post_category_id = $category->id;
-                
+
                 //Upload image
                 if ($request->hasFile('image')) {
                     $imagePath  = config('back.post_path');
@@ -126,12 +127,17 @@ class PostController extends BackController{
                     $upload->setDirectory($imagePath)->setName($filename->getName())->move();
                     $image = new Image($imagePath . $upload->getName());
                     $image->setDirectory($imagePath)->resizeGroup($filename->getGroup());
+
                     delete_file($imagePath . $upload->getName());
+
+                    if ($edit && check_file($imagePath . $postCopy->image)) {
+                        delete_file($imagePath . $postCopy->image);
+                    }
 
                     $resizes     = $image->getResizes();
                     $post->image = $resizes['small'];
                 }
-                
+
                 $post->save();
 
             } catch (Exception $ex) {
@@ -145,22 +151,31 @@ class PostController extends BackController{
     /**
      * Delete post
      *
+     * @param string $slug
      * @param int    $id
      * @param string $token
      *
      * @return type
      * @throws TokenMismatchException
      */
-    public function delete($id, $token) {
+    public function delete($slug, $id, $token) {
 
         if (session()->token() != $token) {
             throw new TokenMismatchException;
         }
 
-        $post = $this->_getPostById($id);
+        $this->_getCategoryBySlug($slug);
+
+        $post      = $this->_getPostById($id);
+        $imagePath = config('back.post_path');
+
+        if (check_file($imagePath . $post->image)) {
+            delete_file($imagePath . $post->image);
+        }
+
         $post->delete();
 
-        return redirect(route('backend_posts'))->with('success', _t('backend_common_deleted'));
+        return redirect(route('backend_posts', $slug))->with('success', _t('backend_common_deleted'));
     }
 
     /**
@@ -170,7 +185,9 @@ class PostController extends BackController{
      *
      * @return response
      */
-    public function toggleShowHide($id) {
+    public function toggleShowHide($slug, $id) {
+
+        $this->_getCategoryBySlug($slug);
 
         $post = $this->_getPostById($id);
 
@@ -182,7 +199,7 @@ class PostController extends BackController{
 
         $post->save();
 
-        return redirect(route('backend_posts'));
+        return redirect(route('backend_posts', $slug));
     }
 
     /**
@@ -203,7 +220,7 @@ class PostController extends BackController{
 
         return $post;
     }
-    
+
     /**
      * Get post category by slug
      *
@@ -222,7 +239,7 @@ class PostController extends BackController{
 
         return $category;
     }
-    
+
     /**
      * Post image group to resize
      *

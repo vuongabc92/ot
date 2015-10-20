@@ -86,9 +86,19 @@
             <ul>
                 <li class="cd-label">Secondary</li>
                 <li class="has-children users">
+                    <a href="{{ route('backend_post_categories') }}">
+                        <b class="fa fa-list"></b>
+                        <span>{{ _t('backend_pc') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_post_categories') }}">{{ _t('backend_pc_list') }}</a></li>
+                        <li><a href="{{ route('backend_pc_add') }}">{{ _t('backend_pc_new') }}</a></li>
+                    </ul>
+                </li>
+                <li class="has-children users">
                     <a href="{{ route('backend_users') }}">
                         <b class="glyphicon glyphicon-user"></b>
-                        <span>Users</span>
+                        <span>{{ _t('backend_users') }}</span>
                     </a>
                     <ul>
                         <li><a href="{{ route('backend_users') }}">{{ _t('backend_user_all') }}</a></li>
@@ -123,6 +133,22 @@
     <script src="{{ asset('packages/king/backend/js/jquery-ui-1.11.4.js') }}"></script>
     <script src="{{ asset('packages/king/backend/js/jquery.menu-aim.js') }}"></script>
     <script src="{{ asset('packages/king/backend/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('packages/king/backend/js/main.js') }}"></script> <!-- Resource jQuery -->
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "#_tinymce",
+            theme: "modern",
+            subfolder:"",
+            plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons paste textcolor filemanager"
+            ],
+            image_advtab: true,
+            toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect forecolor backcolor | link unlink anchor | image media | print preview code"
+        });
+    </script>
+
 </body>
 </html>

@@ -13,15 +13,15 @@
     <div class="form-group">
         <label for="image">{!! error_or_label( _t('backend_post_image'), 'image') !!}</label>
         @if(check_file(config('back.post_path') . $post->image))
-            <img src="{{ asset(config('back.post_path') . $post->image) }}" class="post-image img-responsive img-rounded"/>
+            <img src="{{ asset(config('back.post_path') . $post->image) }}" class="post-image img-responsive _r2"/>
         @endif
-        <div class="_mt5">
+        <div class="_mt10">
             {!! Form::file('image') !!}
         </div>
     </div>
     <div class="form-group">
-        <label for="content">{!! error_or_label( _t('backend_post_content'), 'content') !!}</label>
-        {!! Form::textarea('content', null, ['class' => 'form-control', 'id' => 'content', 'placeholder' => _t('backend_post_content')]) !!}
+        <label for="_tinymce">{!! error_or_label( _t('backend_post_content'), 'content') !!}</label>
+        {!! Form::textarea('content', null, ['class' => 'form-control', 'id' => '_tinymce', 'placeholder' => _t('backend_post_content')]) !!}
     </div>
     <button type="submit" class="btn btn-default _r2">{{ _t('backend_common_save') }}</button>
 {!! Form::close() !!}
