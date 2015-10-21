@@ -134,21 +134,28 @@
     <script src="{{ asset('packages/king/backend/js/jquery.menu-aim.js') }}"></script>
     <script src="{{ asset('packages/king/backend/js/bootstrap.js') }}"></script>
     <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('packages/king/backend/js/main.js') }}"></script> <!-- Resource jQuery -->
+    <script src="{{ asset('packages/king/backend/js/main.js') }}"></script>
     <script type="text/javascript">
         tinymce.init({
             selector: "#_tinymce",
             theme: "modern",
-            subfolder:"",
+            skin: "lightgray",
+            menubar: false,
+            subfolder: "",
+            resize: false,
             plugins: [
             "advlist autolink link image lists charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars code insertdatetime media nonbreaking",
-            "table contextmenu directionality emoticons paste textcolor filemanager"
+            "table contextmenu directionality emoticons autoresize paste textcolor filemanager hr fullscreen"
             ],
             image_advtab: true,
-            toolbar: "undo redo | bold italic underline sizeselect fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect forecolor backcolor | link unlink anchor | image media | print preview code",
-            fontsize_formats: "8px 10px 12px 14px 18px 24px 36px"
+            toolbar1: "bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,wp_more,spellchecker,dfw,wp_adv,separator,image,fullscreen",
+            toolbar2: "fontsizeselect,formatselect,underline,alignjustify,forecolor,paste,removeformat,charmap,outdent,indent,undo,redo,wp_help",
+            toolbar3: "",
+            toolbar4: "",
+            fontsize_formats: "7px 8px 9px 10px 11px 12px 13px 14px 15px 16px 17px 18px 19px 20px 22px 24px 36px 40px"
         });
+        //backcolor
     </script>
 
 </body>

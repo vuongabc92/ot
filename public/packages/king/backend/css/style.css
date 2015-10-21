@@ -185,3 +185,166 @@ button.auth-btn{height:45px;padding:0 !important;}
 .king-content .pagination{margin:0;}
 .post-image{width:100px;}
 .default-post-img{width:100px;height:100px;line-height:100px;font-size:20px}
+
+
+
+
+.mce-toolbar .mce-btn button, .qt-dfw {
+    line-height: normal;
+    padding: 1px 2px;
+}
+
+.mce-toolbar .mce-listbox button {
+    padding: 2px 20px 2px 4px;
+}
+
+.mce-toolbar .mce-ico {
+    color: #666;
+    height: 20px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-shadow: none;
+    width: 20px;
+    font-size: 14px;
+}
+
+.mce-toolbar .mce-btn-group .mce-first, .mce-toolbar .mce-btn-group .mce-last {
+    border-color: transparent;
+}
+
+#wp-fullscreen-buttons .mce-btn, .mce-toolbar .mce-btn-group .mce-btn, .qt-dfw {
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    filter: none;
+    margin: 2px;
+}
+
+.mce-toolbar .mce-btn, .qt-dfw {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-color: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+#wp-fullscreen-buttons .mce-btn:focus, #wp-fullscreen-buttons .mce-btn:hover, .mce-toolbar .mce-btn-group .mce-btn:focus, .mce-toolbar .mce-btn-group .mce-btn:hover, .qt-dfw:focus, .qt-dfw:hover {
+    background: #fafafa none repeat scroll 0 0;
+    border-color: #999;
+    box-shadow: 0 1px 0 #fff inset, 0 1px 0 rgba(0, 0, 0, 0.08);
+    color: #23282d;
+    outline: 0 none;
+}
+
+.mce-colorbutton .mce-preview{width:14px !important;margin-left:-15px !important;}
+.mce-ico {font-family: FontAwesome !important;}
+.mce-i-bold::before {
+    content: "\f032" !important;
+}
+.mce-i-italic::before {
+    content: "\f033" !important;
+}
+.mce-i-underline::before {
+    content: "\f0cd" !important;
+}
+.mce-i-alignleft::before {
+    content: "\f036" !important;
+}
+.mce-i-alignright::before {
+    content: "\f038" !important;
+}
+.mce-i-aligncenter::before {
+    content: "\f037" !important;
+}
+.mce-i-alignjustify::before {
+    content: "\f039" !important;
+}
+.mce-i-bullist::before {
+    content: "\f0ca" !important;
+}
+.mce-i-numlist::before {
+    content: "\f0cb" !important;
+}
+.mce-i-outdent::before {
+    content: "\f03b" !important;
+}
+.mce-i-indent::before {
+    content: "\f03c" !important;
+}
+.mce-i-undo::before {
+    content: "\f0e2" !important;
+}
+.mce-i-redo::before {
+    content: "\f01e" !important;
+}
+.mce-i-forecolor::before {
+    content: "\f031" !important;
+}
+.mce-i-backcolor::before {
+    content: "\f031" !important;
+}
+.mce-i-link::before {
+    content: "\f0c1" !important;
+}
+.mce-i-unlink::before {
+    content: "\f127" !important;
+}
+.mce-i-anchor::before {
+    content: "\f13d" !important;
+}
+.mce-i-image::before {
+    content: "\f03e" !important;
+}
+.mce-i-media::before {
+    content: "\f1c8" !important;
+}
+.mce-i-print::before {
+    content: "\f02f" !important;
+}
+.mce-i-preview::before {
+    content: "\f06e" !important;
+}
+.mce-i-code::before {
+    content: "\f121" !important;
+}
+.mce-i-strikethrough::before {
+    content: "\f0cc" !important;
+}
+.mce-i-superscript::before {
+    content: "\f12b" !important;
+}
+.mce-i-subscript::before {
+    content: "\f12c" !important;
+}
+.mce-i-browse::before {
+    content: "\f093" !important;
+}
+.mce-i-checkbox::before {
+    content: "\f00c" !important;
+}
+.mce-i-hr::before {
+    content: "\f141" !important;
+}
+.mce-i-table::before {
+    content: "\f0ce" !important;
+}
+.mce-i-blockquote::before {
+    content: "\f10d" !important;
+}
+.mce-i-paste::before {
+    content: "\f0ea" !important;
+}
+.mce-i-removeformat::before {
+    content: "\f12d" !important;
+}
+.mce-i-charmap::before {
+    content: "\f1fa" !important;
+}
+.mce-i-resize::before {
+    content: "\f0b2" !important;
+}
+.mce-i-fullscreen::before {
+    content: "\f0b2" !important;
+}
