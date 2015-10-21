@@ -31,8 +31,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/post-category/{id}/delete/{token}', ['as' => 'backend_pc_delete', 'uses' => 'PostCategoryController@delete']);
     Route::get('/post-category/{id}/toggle-show-hide', ['as' => 'backend_pc_active', 'uses' => 'PostCategoryController@toggleShowHide']);
 
-
-    //Route::get('/p/{slug}', ['as' => 'backend_posts', 'uses' => 'PostCategoryController@index']);
     Route::get('/p/{slug}/all', ['as' => 'backend_posts', 'uses' => 'PostController@index']);
     Route::get('/p/{slug}/add', ['as' => 'backend_post_add', 'uses' => 'PostController@add']);
     Route::get('/p/{slug}/{id}/edit', ['as' => 'backend_post_edit', 'uses' => 'PostController@edit']);
@@ -46,4 +44,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/meta/{id}/delete/{token}', ['as' => 'backend_meta_delete', 'uses' => 'MetaController@delete']);
     Route::post('/meta/save', ['as' => 'backend_meta_save', 'uses' => 'MetaController@save']);
     Route::get('/meta/{id}/toggle-show-hide', ['as' => 'backend_meta_active', 'uses' => 'MetaController@toggleShowHide']);
+    
+    //Post category
+    Route::get('/image-categories', ['as' => 'backend_image_categories', 'uses' => 'ImageCategoryController@index']);
+    Route::get('/image-category/add', ['as' => 'backend_ic_add', 'uses' => 'ImageCategoryController@add']);
+    Route::get('/image-category/{id}/edit', ['as' => 'backend_ic_edit', 'uses' => 'ImageCategoryController@edit']);
+    Route::post('/image-category/save', ['as' => 'backend_ic_save', 'uses' => 'ImageCategoryController@save']);
+    Route::get('/image-category/{id}/delete/{token}', ['as' => 'backend_ic_delete', 'uses' => 'ImageCategoryController@delete']);
+    Route::get('/image-category/{id}/toggle-show-hide', ['as' => 'backend_ic_active', 'uses' => 'ImageCategoryController@toggleShowHide']);
+
+    Route::get('/i/{slug}/all', ['as' => 'backend_images', 'uses' => 'ImageController@index']);
+    Route::get('/i/{slug}/add', ['as' => 'backend_image_add', 'uses' => 'ImageController@add']);
+    Route::get('/i/{slug}/{id}/edit', ['as' => 'backend_image_edit', 'uses' => 'ImageController@edit']);
+    Route::get('/i/{slug}/{id}/delete/{token}', ['as' => 'backend_image_delete', 'uses' => 'ImageController@delete']);
+    Route::post('/i/{slug}/save', ['as' => 'backend_image_save', 'uses' => 'ImageController@save']);
+    Route::get('/i/{slug}/{id}/toggle-show-hide', ['as' => 'backend_image_active', 'uses' => 'ImageController@toggleShowHide']);
 });

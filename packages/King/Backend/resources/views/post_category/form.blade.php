@@ -11,7 +11,7 @@
         {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name', 'placeholder' => _t('backend_pc_name')]) !!}
     </div>
     <div class="form-group">
-        <label for="slug">{!! error_or_label( _t('backend_pc_slug'), 'role') !!}</label>
+        <label for="slug">{!! error_or_label( _t('backend_pc_slug'), 'slug') !!}</label>
         {!! Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'placeholder' => _t('backend_pc_slug')]) !!}
     </div>
     <button type="submit" class="btn btn-default _r2">{{ _t('backend_common_save') }}</button>

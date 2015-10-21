@@ -35,7 +35,6 @@
                 <a class="label label-danger _fs11 _r2" href="{{ route('backend_meta_active', $meta->id) }}">{{ _t('backend_common_disable') }}</a>
                 @endif
             </td>
-            <td>{{ time_format($meta->updated_at, 'd/m/Y') }}</td>
             <td>
                 <a href="{{ route('backend_meta_edit', $meta->id) }}" class="btn btn-warning btn-sm _r2">{{ _t('backend_common_edit') }}</a>
                 <a href="{{ route('backend_meta_delete', ['id' => $meta->id, 'token' => csrf_token()]) }}" class="btn btn-danger btn-sm _r2" onclick="return confirm('{{ _t('backend_meta_delete_one') }}')">{{ _t('backend_common_delete') }}</a>
