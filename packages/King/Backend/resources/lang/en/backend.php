@@ -63,6 +63,12 @@ return [
     'backend_post_msg_image' => 'Image must be an image format.',
     'backend_post_delete_one' => 'Are you sure to delete this post?',
 
+    'backend_meta_list' => 'List All Meta',
+    'backend_meta_key' => 'Key',
+    'backend_meta_key_name' => 'Key name',
+    'backend_meta_value' => 'Value',
+    'backend_meta_new' => 'Add New Meta',
+
     'backend_common_save' => 'Save',
     'backend_common_edit' => 'Edit',
     'backend_common_delete' => 'Delete',

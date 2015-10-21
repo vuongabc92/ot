@@ -39,4 +39,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/p/{slug}/{id}/delete/{token}', ['as' => 'backend_post_delete', 'uses' => 'PostController@delete']);
     Route::post('/p/{slug}/save', ['as' => 'backend_post_save', 'uses' => 'PostController@save']);
     Route::get('/p/{slug}/{id}/toggle-show-hide', ['as' => 'backend_post_active', 'uses' => 'PostController@toggleShowHide']);
+
+    Route::get('/meta', ['as' => 'backend_meta', 'uses' => 'MetaController@index']);
+    Route::get('/meta/add', ['as' => 'backend_meta_add', 'uses' => 'MetaController@add']);
+    Route::get('/meta/{id}/edit', ['as' => 'backend_meta_edit', 'uses' => 'MetaController@edit']);
+    Route::get('/meta/{id}/delete/{token}', ['as' => 'backend_meta_delete', 'uses' => 'MetaController@delete']);
+    Route::post('/meta/save', ['as' => 'backend_meta_save', 'uses' => 'MetaController@save']);
+    Route::get('/meta/{id}/toggle-show-hide', ['as' => 'backend_meta_active', 'uses' => 'MetaController@toggleShowHide']);
 });
