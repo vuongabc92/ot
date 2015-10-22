@@ -46,8 +46,8 @@ class Meta extends Base {
             'key.max'           => 'Key is too long.',
             'key.unique'        => 'Key had already used.',
             'key.alpha_dash'    => 'Key only contains: a-z, 0-9, "-" and "_"',
-            'key_name.required' => 'Key name is required.',
-            'key_name.max'      => 'Key name is too long.',
+            'key_name.required' => 'Name is required.',
+            'key_name.max'      => 'Name is too long.',
             'value.required'    => 'Value is required.',
             'value.max'         => 'Value is too long.',
         ];

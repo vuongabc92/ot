@@ -44,7 +44,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/meta/{id}/delete/{token}', ['as' => 'backend_meta_delete', 'uses' => 'MetaController@delete']);
     Route::post('/meta/save', ['as' => 'backend_meta_save', 'uses' => 'MetaController@save']);
     Route::get('/meta/{id}/toggle-show-hide', ['as' => 'backend_meta_active', 'uses' => 'MetaController@toggleShowHide']);
-    
+
     //Post category
     Route::get('/image-categories', ['as' => 'backend_image_categories', 'uses' => 'ImageCategoryController@index']);
     Route::get('/image-category/add', ['as' => 'backend_ic_add', 'uses' => 'ImageCategoryController@add']);
@@ -59,4 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/i/{slug}/{id}/delete/{token}', ['as' => 'backend_image_delete', 'uses' => 'ImageController@delete']);
     Route::post('/i/{slug}/save', ['as' => 'backend_image_save', 'uses' => 'ImageController@save']);
     Route::get('/i/{slug}/{id}/toggle-show-hide', ['as' => 'backend_image_active', 'uses' => 'ImageController@toggleShowHide']);
+
+    Route::get('/map', ['as' => 'backend_map', 'uses' => 'MapController@index']);
+
 });

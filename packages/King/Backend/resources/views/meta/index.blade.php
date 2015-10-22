@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>{{ _t('backend_meta_key') }}</th>
+            <th>{{ _t('backend_meta_key_name') }}</th>
             <th>{{ _t('backend_meta_value') }}</th>
             <th width="50px">{{ _t('backend_common_status') }}</th>
             <th width="130px">{{ _t('backend_common_actions') }}</th>

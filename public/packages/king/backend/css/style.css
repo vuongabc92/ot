@@ -157,7 +157,7 @@ Sidebar
 }
 @media only screen and (min-width: 1170px) {
     .has-children > ul {width: 100%;z-index: 1;}
-    .has-children ul a {padding-left: 18px;text-decoration: none;}
+    .has-children ul a {padding-left: 25px;text-decoration: none;}
     .has-children.active > ul {position: relative;display: block;left: 0;box-shadow: none;}
     .no-touch .cd-side-nav .has-children:hover > ul, .cd-side-nav .has-children.hover > ul {display: block;opacity: 1;visibility: visible;}
 }
@@ -173,8 +173,8 @@ body.auth{background-color:#3e454c;}
 button.auth-btn{height:45px;padding:0 !important;}
 .auth-btn>i.fa-arrow-right{font-size:18px;line-height:45px;vertical-align:middle;}
 .username{text-transform:capitalize;}
-.cd-side-nav>ul>li>a>b{width:20px;font-size:19px;color:#aaa;}
-.cd-side-nav>ul>li>a>span{margin-left:10px;}
+.cd-side-nav>ul>li>a>b{width:20px;font-size:14px;color:#aaa;}
+.cd-side-nav>ul>li>a>span{margin-left:5px;}
 .add-title{text-transform:capitalize;}
 .default-image{float:left;background-color:#eee;text-align:center;vertical-align:middle;color:#777;}
 .default-avatar{width:35px;height:35px;line-height:35px;font-size:14px;}
@@ -264,87 +264,35 @@ button.auth-btn{height:45px;padding:0 !important;}
 .mce-i-bullist::before {
     content: "\f0ca" !important;
 }
-.mce-i-numlist::before {
-    content: "\f0cb" !important;
-}
-.mce-i-outdent::before {
-    content: "\f03b" !important;
-}
-.mce-i-indent::before {
-    content: "\f03c" !important;
-}
-.mce-i-undo::before {
-    content: "\f0e2" !important;
-}
-.mce-i-redo::before {
-    content: "\f01e" !important;
-}
-.mce-i-forecolor::before {
-    content: "\f031" !important;
-}
-.mce-i-backcolor::before {
-    content: "\f031" !important;
-}
-.mce-i-link::before {
-    content: "\f0c1" !important;
-}
-.mce-i-unlink::before {
-    content: "\f127" !important;
-}
-.mce-i-anchor::before {
-    content: "\f13d" !important;
-}
-.mce-i-image::before {
-    content: "\f03e" !important;
-}
-.mce-i-media::before {
-    content: "\f1c8" !important;
-}
-.mce-i-print::before {
-    content: "\f02f" !important;
-}
-.mce-i-preview::before {
-    content: "\f06e" !important;
-}
-.mce-i-code::before {
-    content: "\f121" !important;
-}
-.mce-i-strikethrough::before {
-    content: "\f0cc" !important;
-}
-.mce-i-superscript::before {
-    content: "\f12b" !important;
-}
-.mce-i-subscript::before {
-    content: "\f12c" !important;
-}
-.mce-i-browse::before {
-    content: "\f093" !important;
-}
-.mce-i-checkbox::before {
-    content: "\f00c" !important;
-}
-.mce-i-hr::before {
-    content: "\f141" !important;
-}
-.mce-i-table::before {
-    content: "\f0ce" !important;
-}
-.mce-i-blockquote::before {
-    content: "\f10d" !important;
-}
-.mce-i-paste::before {
-    content: "\f0ea" !important;
-}
-.mce-i-removeformat::before {
-    content: "\f12d" !important;
-}
-.mce-i-charmap::before {
-    content: "\f1fa" !important;
-}
-.mce-i-resize::before {
-    content: "\f0b2" !important;
-}
-.mce-i-fullscreen::before {
-    content: "\f0b2" !important;
-}
+.mce-i-numlist::before{content: "\f0cb" !important;}
+.mce-i-outdent::before{content: "\f03b" !important;}
+.mce-i-indent::before{content: "\f03c" !important;}
+.mce-i-undo::before{content: "\f0e2" !important;}
+.mce-i-redo::before{content: "\f01e" !important;}
+.mce-i-forecolor::before{content: "\f031" !important;}
+.mce-i-backcolor::before{content: "\f031" !important;}
+.mce-i-link::before{content: "\f0c1" !important;}
+.mce-i-unlink::before{content: "\f127" !important;}
+.mce-i-anchor::before{content: "\f13d" !important;}
+.mce-i-image::before{content: "\f03e" !important;}
+.mce-i-media::before{content: "\f1c8" !important;}
+.mce-i-print::before{content: "\f02f" !important;}
+.mce-i-preview::before{content: "\f06e" !important;}
+.mce-i-code::before{content: "\f121" !important;}
+.mce-i-strikethrough::before{content: "\f0cc" !important;}
+.mce-i-superscript::before{content: "\f12b" !important;}
+.mce-i-subscript::before{content: "\f12c" !important;}
+.mce-i-browse::before{content: "\f093" !important;}
+.mce-i-checkbox::before{content: "\f00c" !important;}
+.mce-i-hr::before{content: "\f141" !important;}
+.mce-i-table::before{content: "\f0ce" !important;}
+.mce-i-blockquote::before{content: "\f10d" !important;}
+.mce-i-paste::before{content: "\f0ea" !important;}
+.mce-i-removeformat::before{content: "\f12d" !important;}
+.mce-i-charmap::before{content: "\f1fa" !important;}
+.mce-i-resize::before{content: "\f0b2" !important;}
+.mce-i-fullscreen::before{content: "\f0b2" !important;}
+.google-map{height:400px;}
+.save-widget{width: 300px;box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;background-color: white;padding: 10px;font-family: Roboto, Arial;font-size: 13px;margin: 15px;}
+
+

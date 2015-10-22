@@ -65,7 +65,7 @@ return [
 
     'backend_meta_list' => 'List All Meta',
     'backend_meta_key' => 'Key',
-    'backend_meta_key_name' => 'Key name',
+    'backend_meta_key_name' => 'Name',
     'backend_meta_value' => 'Value',
     'backend_meta_new' => 'Add New Meta',
     'backend_meta_delete_one' => 'Are you sure to delete this meta?',
@@ -76,7 +76,7 @@ return [
     'backend_ic_slug' => 'Slug',
     'backend_ic_new' => 'Add New Category',
     'backend_ic_delete_one' => 'Are you sure to delete this category?',
-    
+
     'backend_image_msg_namax' => 'Name is too long.',
     'backend_image_msg_imgreq' => 'Image is required.',
     'backend_image_msg_image' => 'Image is must be an image format.',
@@ -85,7 +85,12 @@ return [
     'backend_image_new' => 'Add New Image',
     'backend_image_list' => 'List All Images',
     'backend_image_delete_one' => 'Are you sure to delete this image?',
-    
+
+    'backend_about' => 'About',
+    'backend_sliders' => 'Sliders',
+    'backend_meta' => 'Meta',
+    'backend_contact' => 'Contact',
+
     'backend_common_save' => 'Save',
     'backend_common_edit' => 'Edit',
     'backend_common_delete' => 'Delete',

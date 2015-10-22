@@ -51,48 +51,51 @@
 
     <main class="cd-main-content">
         <nav class="cd-side-nav">
-            <ul>
-                <li class="cd-label">Main</li>
-                <li class="has-children overview">
-                    <a href="#0">Overview</a>
-
-                    <ul>
-                        <li><a href="#0">All Data</a></li>
-                        <li><a href="#0">Category 1</a></li>
-                        <li><a href="#0">Category 2</a></li>
-                    </ul>
-                </li>
-                <li class="has-children notifications">
-                    <a href="#0">Notifications<span class="count">3</span></a>
-
-                    <ul>
-                        <li><a href="#0">All Notifications</a></li>
-                        <li><a href="#0">Friends</a></li>
-                        <li><a href="#0">Other</a></li>
-                    </ul>
-                </li>
-
-                <li class="has-children comments active">
-                    <a href="#0">Comments</a>
-
-                    <ul>
-                        <li><a href="#0">All Comments</a></li>
-                        <li><a href="#0">Edit Comment</a></li>
-                        <li><a href="#0">Delete Comment</a></li>
-                    </ul>
-                </li>
-            </ul>
 
             <ul>
-                <li class="cd-label">Secondary</li>
-                <li class="has-children users">
+                <li class="cd-label">Main menu</li>
+                <li class="about active">
+                    <a href="{{ route('backend_post_edit', ['slug' => 'about', 'id' => 4]) }}">
+                        <b class="fa fa-bullhorn"></b>
+                        <span>{{ _t('backend_about') }}</span>
+                    </a>
+                </li>
+                <li class="about">
+                    <a href="{{ route('backend_post_edit', ['slug' => 'contact', 'id' => 5]) }}">
+                        <b class="fa fa-credit-card"></b>
+                        <span>{{ _t('backend_contact') }}</span>
+                    </a>
+                </li>
+                <li class="sliders">
+                    <a href="{{ route('backend_images', ['slug' => 'carousel']) }}">
+                        <b class="fa fa-sliders"></b>
+                        <span>{{ _t('backend_sliders') }}</span>
+                    </a>
+                </li>
+                <li class="sliders">
+                    <a href="{{ route('backend_meta') }}">
+                        <b class="fa fa-bookmark-o"></b>
+                        <span>{{ _t('backend_meta') }}</span>
+                    </a>
+                </li>
+                <li class="has-children post-categories">
                     <a href="{{ route('backend_post_categories') }}">
-                        <b class="fa fa-list"></b>
+                        <b class="fa fa-newspaper-o"></b>
                         <span>{{ _t('backend_pc') }}</span>
                     </a>
                     <ul>
                         <li><a href="{{ route('backend_post_categories') }}">{{ _t('backend_pc_list') }}</a></li>
                         <li><a href="{{ route('backend_pc_add') }}">{{ _t('backend_pc_new') }}</a></li>
+                    </ul>
+                </li>
+                <li class="has-children post-categories">
+                    <a href="{{ route('backend_image_categories') }}">
+                        <b class="fa fa-image"></b>
+                        <span>{{ _t('backend_ic') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_image_categories') }}">{{ _t('backend_ic_list') }}</a></li>
+                        <li><a href="{{ route('backend_ic_add') }}">{{ _t('backend_ic_new') }}</a></li>
                     </ul>
                 </li>
                 <li class="has-children users">
@@ -105,7 +108,7 @@
                         <li><a href="{{ route('backend_user_add') }}">{{ _t('backend_user_new') }}</a></li>
                     </ul>
                 </li>
-                <li class="has-children users">
+                <li class="has-children roles">
                     <a href="{{ route('backend_roles') }}">
                         <b class="fa fa-code-fork"></b>
                         <span>{{ _t('backend_roles') }}</span>
