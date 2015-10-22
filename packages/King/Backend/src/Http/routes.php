@@ -62,4 +62,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::get('/map', ['as' => 'backend_map', 'uses' => 'MapController@index']);
 
+    Route::get('/category-root', ['as' => 'backend_category_root', 'uses' => 'CategoryRootController@index']);
+    Route::get('/category-root/add', ['as' => 'backend_cr_add', 'uses' => 'CategoryRootController@add']);
+    Route::get('/category-root/{id}/edit', ['as' => 'backend_cr_edit', 'uses' => 'CategoryRootController@edit']);
+    Route::post('/category-root/save', ['as' => 'backend_cr_save', 'uses' => 'CategoryRootController@save']);
+    Route::get('/category-root/{id}/delete/{token}', ['as' => 'backend_cr_delete', 'uses' => 'CategoryRootController@delete']);
+    Route::get('/category-root/{id}/toggle-show-hide', ['as' => 'backend_cr_active', 'uses' => 'CategoryRootController@toggleShowHide']);
+    
 });

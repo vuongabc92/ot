@@ -90,6 +90,13 @@ return [
     'backend_sliders' => 'Sliders',
     'backend_meta' => 'Meta',
     'backend_contact' => 'Contact',
+    
+    'backend_cr' => 'Category Root',
+    'backend_cr_list' => 'List All Categories',
+    'backend_cr_name' => 'Name',
+    'backend_cr_slug' => 'Slug',
+    'backend_cr_new' => 'Add New Category',
+    'backend_cr_delete_one' => 'Are you sure to delete this category?',
 
     'backend_common_save' => 'Save',
     'backend_common_edit' => 'Edit',
