@@ -47,4 +47,13 @@ class CategoryRoot extends Base {
             'slug.max'      => 'Slug is too long.',
         ];
     }
+
+    /**
+     * Posts
+     *
+     * @return App\Models\Image
+     */
+    public function categoryOnes() {
+        return $this->hasMany('App\Models\CategoryOne');
+    }
 }

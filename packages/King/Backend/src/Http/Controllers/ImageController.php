@@ -39,8 +39,8 @@ class ImageController extends BackController{
 
         $category   = $this->_getCategoryBySlug($slug);
         $images     = $category->images;
-        $imagePath  = config('back.image_path');
-      
+        $imagePath  = config('back.image_one_path');
+
         return view('backend::image.index', [
             'images'     => $images,
             'slug'       => $slug,
@@ -117,7 +117,7 @@ class ImageController extends BackController{
 
                 //Upload image
                 if ($request->hasFile('image')) {
-                    $imagePath  = config('back.image_path');
+                    $imagePath  = config('back.image_one_path');
                     $file       = $request->file('image');
                     $filename   = new FileName($imagePath, $file->getClientOriginalExtension());
                     $filename->avatar()->generate();

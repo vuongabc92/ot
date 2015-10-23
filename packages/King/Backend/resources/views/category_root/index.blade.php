@@ -27,7 +27,7 @@
         <tr>
             <td>{{ $i }}</td>
             <td>{{ $category->name }}</td>
-            <td><a href="{{route('backend_posts', $category->id) }}">{{ $category->name }}</a></td>
+            <td><a href="{{route('backend_posts', $category->id) }}">{{ $category->slug }}</a></td>
             <td>
                 @if($category->is_active)
                 <a class="label label-success _fs11 _r2" href="{{ route('backend_cr_active', $category->id) }}">{{ _t('backend_common_active') }}</a>

@@ -6,6 +6,10 @@
 /tests
 /public/uploads/avatar
 /public/uploads/posts
+/public/uploads/images
+/public/uploads/category_one
+/public/uploads/category_two
+/public/uploads/category_three
 Homestead.yaml
 Homestead.json
 composer.lock

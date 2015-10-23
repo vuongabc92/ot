@@ -16,7 +16,7 @@
             <img src="{{ asset(config('back.post_path') . $post->image) }}" class="post-image img-responsive _r2"/>
         @endif
         <div class="_mt10">
-            {!! Form::file('image') !!}
+            {!! Form::file('image', ['class' => '', 'id' => 'image', 'accept' => 'image/*']) !!}
         </div>
     </div>
     <div class="form-group">

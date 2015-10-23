@@ -51,7 +51,29 @@
 
     <main class="cd-main-content">
         <nav class="cd-side-nav">
-
+            <ul>
+                <li class="cd-label">Products</li>
+                <li class="about has-children">
+                    <a href="{{ route('backend_category_one', 'products') }}">
+                        <b class="fa fa-th-list"></b>
+                        <span>{{ _t('backend_co') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_category_one', 'products') }}">{{ _t('backend_co_list') }}</a></li>
+                        <li><a href="{{ route('backend_co_add', 'products') }}">{{ _t('backend_co_new') }}</a></li>
+                    </ul>
+                </li>
+                <li class="about has-children">
+                    <a href="{{ route('backend_category_two') }}">
+                        <b class="fa fa-th-list"></b>
+                        <span>{{ _t('backend_ct') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_category_two') }}">{{ _t('backend_ct_list') }}</a></li>
+                        <li><a href="{{ route('backend_ct_add') }}">{{ _t('backend_ct_new') }}</a></li>
+                    </ul>
+                </li>
+            </ul>
             <ul>
                 <li class="cd-label">Main menu</li>
                 <li class="about active">
@@ -78,26 +100,6 @@
                         <span>{{ _t('backend_meta') }}</span>
                     </a>
                 </li>
-                <li class="has-children post-categories">
-                    <a href="{{ route('backend_post_categories') }}">
-                        <b class="fa fa-newspaper-o"></b>
-                        <span>{{ _t('backend_pc') }}</span>
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('backend_post_categories') }}">{{ _t('backend_pc_list') }}</a></li>
-                        <li><a href="{{ route('backend_pc_add') }}">{{ _t('backend_pc_new') }}</a></li>
-                    </ul>
-                </li>
-                <li class="has-children post-categories">
-                    <a href="{{ route('backend_image_categories') }}">
-                        <b class="fa fa-image"></b>
-                        <span>{{ _t('backend_ic') }}</span>
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('backend_image_categories') }}">{{ _t('backend_ic_list') }}</a></li>
-                        <li><a href="{{ route('backend_ic_add') }}">{{ _t('backend_ic_new') }}</a></li>
-                    </ul>
-                </li>
                 <li class="has-children users">
                     <a href="{{ route('backend_users') }}">
                         <b class="glyphicon glyphicon-user"></b>
@@ -119,7 +121,29 @@
                     </ul>
                 </li>
             </ul>
-
+            <ul>
+                <li class="cd-label">Develop</li>
+                <li class="has-children post-categories">
+                    <a href="{{ route('backend_post_categories') }}">
+                        <b class="fa fa-newspaper-o"></b>
+                        <span>{{ _t('backend_pc') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_post_categories') }}">{{ _t('backend_pc_list') }}</a></li>
+                        <li><a href="{{ route('backend_pc_add') }}">{{ _t('backend_pc_new') }}</a></li>
+                    </ul>
+                </li>
+                <li class="has-children post-categories">
+                    <a href="{{ route('backend_image_categories') }}">
+                        <b class="fa fa-image"></b>
+                        <span>{{ _t('backend_ic') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_image_categories') }}">{{ _t('backend_ic_list') }}</a></li>
+                        <li><a href="{{ route('backend_ic_add') }}">{{ _t('backend_ic_new') }}</a></li>
+                    </ul>
+                </li>
+            </ul>
             <ul>
                 <li class="cd-label">Action</li>
                 <li class="action-btn"><a href="#0">+ Button</a></li>
