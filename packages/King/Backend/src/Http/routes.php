@@ -65,6 +65,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     //Map
     Route::get('/map', ['as' => 'backend_map', 'uses' => 'MapController@index']);
+    Route::post('/map/save', ['as' => 'backend_map_save', 'uses' => 'MapController@save']);
 
     //Category Root
     Route::get('/category-root', ['as' => 'backend_category_root', 'uses' => 'CategoryRootController@index']);

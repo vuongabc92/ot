@@ -12,7 +12,11 @@ class CreateOptionsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('options', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('key', 250);
+            $table->string('value', 250);
+        });
     }
 
     /**
@@ -22,6 +26,6 @@ class CreateOptionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('options');
     }
 }

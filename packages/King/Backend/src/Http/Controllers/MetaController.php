@@ -47,7 +47,7 @@ class MetaController extends BackController{
      */
     public function add() {
         return view('backend::meta.form', [
-            'meta'   => $this->meta
+            'meta' => $this->meta
         ]);
     }
 

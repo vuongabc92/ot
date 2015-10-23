@@ -136,7 +136,11 @@ return [
     'backend_cth_delete_one' => 'Are you sure to delete this category?',
     'backend_cth_select_ct' => 'Please select category two',
 
-    'backend_common_save' => 'Save',
+    'backend_map' => 'Google Map',
+    'backend_map_desc' => 'Map description',
+    'backend_map_save' => 'Save Map Info',
+
+    'backend_common_save' => 'Save Data',
     'backend_common_edit' => 'Edit',
     'backend_common_delete' => 'Delete',
     'backend_common_status' => 'Status',
