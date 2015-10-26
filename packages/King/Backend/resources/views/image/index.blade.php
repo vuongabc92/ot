@@ -1,4 +1,8 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'image-' . $slug])
+
+@section('title')
+    {{ _t('backend_image_image') }} |
+@stop
 
 @section('content')
 

@@ -1,4 +1,8 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'product'])
+
+@section('title')
+    {{ _t('backend_products') }} |
+@stop
 
 @section('content')
 
@@ -29,7 +33,7 @@
         <tr>
             <td>{{ $i }}</td>
             <td>
-                @if( ! check_file($image_path . $images->small))
+                @if($images !== null && ! check_file($image_path . $images->small))
                     <span class="default-image default-product-img _r2 fa fa-image"></span>
                 @else
                     <img src="{{ asset($image_path . $images->small) }}" class="product-image img-responsive _r2"/>

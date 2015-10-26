@@ -1,4 +1,12 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'category-root'])
+
+@section('title')
+    @if($category_root->id !== null) 
+        {{ _t('backend_cr') }} > {{ _t('backend_common_edit') }} |
+    @else
+        {{ _t('backend_cr') }} > {{ _t('backend_common_add') }} |
+    @endif
+@stop
 
 @section('content')
 

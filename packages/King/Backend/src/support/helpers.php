@@ -333,5 +333,16 @@ if ( ! function_exists('error_or_label')) {
             return '<span class="_tr5">' . $message . '</span>';
         }
     }
+}
+
+if ( ! function_exists('nav_active')) {
+
     
+    function nav_active($nav, $current, $class = 'active') {
+
+        if ($nav === $current) {
+            return $class;
+        }
+        
+    }
 }

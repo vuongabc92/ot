@@ -1,4 +1,12 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'post-' . $slug])
+
+@section('title')
+    @if($post->id !== null) 
+        {{ _t('backend_post') }} > {{ _t('backend_common_edit') }} |
+    @else
+        {{ _t('backend_post') }} > {{ _t('backend_common_add') }} |
+    @endif
+@stop
 
 @section('content')
 

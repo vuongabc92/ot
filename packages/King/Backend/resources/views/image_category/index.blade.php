@@ -1,4 +1,8 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'image-category'])
+
+@section('title')
+    {{ _t('backend_ic') }} |
+@stop
 
 @section('content')
 

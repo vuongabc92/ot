@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/style.css') }}"> <!-- Resource style -->
         <script src="{{ asset('packages/king/backend/js/modernizr.js') }}"></script> <!-- Modernizr -->
 
-        <title>King Elephant | Login</title>
+        <title>{{ _t('backend_auth_login') }} | King Elephant</title>
     </head>
     <body class="auth">
 

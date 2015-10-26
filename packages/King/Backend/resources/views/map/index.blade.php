@@ -1,4 +1,8 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'map'])
+
+@section('title')
+        {{ _t('backend_map') }} |
+@stop
 
 @section('content')
 backend_map_save

@@ -29,7 +29,7 @@ class ProductController extends BackController{
      */
     public function __construct(Product $product)
     {
-        $this->product     = $product;
+        $this->product    = $product;
         $this->image_path = config('back.products_path');
     }
 
@@ -41,8 +41,8 @@ class ProductController extends BackController{
      */
     public function index() {
 
-        $products   = Product::paginate(config('back.default_pagination'));
-
+        $products = Product::paginate(config('back.default_pagination'));
+        
         return view('backend::product.index', [
             'products'   => $products,
             'image_path' => $this->image_path

@@ -1,4 +1,12 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'role'])
+
+@section('title')
+    @if($role->id !== null) 
+        {{ _t('backend_role') }} > {{ _t('backend_common_edit') }} |
+    @else
+        {{ _t('backend_role') }} > {{ _t('backend_common_add') }} |
+    @endif
+@stop
 
 @section('content')
 

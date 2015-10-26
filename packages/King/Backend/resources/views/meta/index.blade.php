@@ -1,4 +1,9 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'meta'])
+
+@section('title')
+    {{ _t('backend_meta') }} |
+@stop
+
 
 @section('content')
 

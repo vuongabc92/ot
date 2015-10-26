@@ -1,4 +1,8 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'category-one'])
+
+@section('title')
+    {{ _t('backend_co') }} |
+@stop
 
 @section('content')
 

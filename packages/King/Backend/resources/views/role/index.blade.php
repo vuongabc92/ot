@@ -1,4 +1,8 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'role'])
+
+@section('title')
+    {{ _t('backend_role') }} |
+@stop
 
 @section('content')
 

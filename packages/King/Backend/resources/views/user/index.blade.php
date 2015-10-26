@@ -1,4 +1,8 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'user'])
+
+@section('title')
+    {{ _t('backend_users') }} |
+@stop
 
 @section('content')
 

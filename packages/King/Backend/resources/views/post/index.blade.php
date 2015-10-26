@@ -1,4 +1,8 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'post-' . $slug])
+
+@section('title')
+    {{ _t('backend_post') }} |
+@stop
 
 @section('content')
 

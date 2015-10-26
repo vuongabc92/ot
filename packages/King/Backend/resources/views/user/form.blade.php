@@ -1,4 +1,12 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'user'])
+
+@section('title')
+    @if($user->id !== null) 
+        {{ _t('backend_users') }} > {{ _t('backend_common_edit') }} |
+    @else
+        {{ _t('backend_users') }} > {{ _t('backend_common_add') }} |
+    @endif
+@stop
 
 @section('content')
 

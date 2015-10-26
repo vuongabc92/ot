@@ -1,4 +1,12 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'image-' . $slug])
+
+@section('title')
+    @if($image->id !== null) 
+        {{ _t('backend_image_image') }} > {{ _t('backend_common_edit') }} |
+    @else
+        {{ _t('backend_image_image') }} > {{ _t('backend_common_add') }} |
+    @endif
+@stop
 
 @section('content')
 

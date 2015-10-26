@@ -1,4 +1,12 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'image-category'])
+
+@section('title')
+    @if($image_category->id !== null) 
+        {{ _t('backend_ic') }} > {{ _t('backend_common_edit') }} |
+    @else
+        {{ _t('backend_ic') }} > {{ _t('backend_common_add') }} |
+    @endif
+@stop
 
 @section('content')
 

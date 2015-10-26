@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'backend_dashboard' => 'Dashboard',
+    
     'backend_auth_login' => 'LOG  IN',
     'backend_auth_uname' => 'User name',
     'backend_auth_email' => 'Email',
@@ -20,7 +22,7 @@ return [
     'backend_role_msg_role_req' => 'Role is required.',
     'backend_role_msg_role_max' => 'Role is too long (32).',
     'backend_role_msg_role_exist' => 'Role had already used.',
-    'backend_role_delete_one' => 'Becareful!! Delete user and all relative users?',
+    'backend_role_delete_one' => 'Becareful!! Delete role and all relative users?',
 
     'backend_users' => 'Users',
     'backend_user_all' => 'All Users',
@@ -50,6 +52,7 @@ return [
     'backend_pc_new' => 'Add New Category',
     'backend_pc_delete_one' => 'Are you sure to delete this category?',
 
+    'backend_post' => 'Post',
     'backend_post_list' => 'List All Posts',
     'backend_post_name' => 'Name',
     'backend_post_image' => 'Image',
@@ -63,6 +66,7 @@ return [
     'backend_post_msg_image' => 'Image must be an image format.',
     'backend_post_delete_one' => 'Are you sure to delete this post?',
 
+    'backend_meta' => 'Meta',
     'backend_meta_list' => 'List All Meta',
     'backend_meta_key' => 'Key',
     'backend_meta_key_name' => 'Name',
@@ -166,6 +170,7 @@ return [
 
     'backend_common_save' => 'Save Data',
     'backend_common_edit' => 'Edit',
+    'backend_common_add' => 'Add',
     'backend_common_delete' => 'Delete',
     'backend_common_status' => 'Status',
     'backend_common_active' => 'Active',

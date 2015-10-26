@@ -1,4 +1,12 @@
-@extends('backend::layouts._backend')
+@extends('backend::layouts._backend', ['active' => 'product'])
+
+@section('title')
+    @if($product->id !== null) 
+        {{ _t('backend_products') }} > {{ _t('backend_common_edit') }} |
+    @else
+        {{ _t('backend_products') }} > {{ _t('backend_common_add') }} |
+    @endif
+@stop
 
 @section('content')
 

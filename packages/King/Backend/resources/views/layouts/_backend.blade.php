@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{ asset('packages/king/backend/css/style.css') }}"> <!-- Resource style -->
         <script src="{{ asset('packages/king/backend/js/modernizr.js') }}"></script> <!-- Modernizr -->
 
-        <title>King Elephant</title>
+        <title>@yield('title') King Elephant</title>
     </head>
     <body>
         <header class="cd-main-header">
@@ -51,7 +51,7 @@
         <nav class="cd-side-nav">
             <ul>
                 <li class="cd-label">Products</li>
-                <li class="about has-children">
+                <li class="about has-children {{ nav_active('category-one', $active) }}">
                     <a href="{{ route('backend_category_one', 'products') }}">
                         <b class="fa fa-th-list"></b>
                         <span>{{ _t('backend_co') }}</span>
@@ -61,7 +61,7 @@
                         <li><a href="{{ route('backend_co_add', 'products') }}">{{ _t('backend_co_new') }}</a></li>
                     </ul>
                 </li>
-                <li class="about has-children">
+                <li class="about has-children {{ nav_active('category-two', $active) }}">
                     <a href="{{ route('backend_category_two') }}">
                         <b class="fa fa-th-list"></b>
                         <span>{{ _t('backend_ct') }}</span>
@@ -71,7 +71,7 @@
                         <li><a href="{{ route('backend_ct_add') }}">{{ _t('backend_ct_new') }}</a></li>
                     </ul>
                 </li>
-                <li class="about has-children">
+                <li class="about has-children {{ nav_active('category-three', $active) }}">
                     <a href="{{ route('backend_category_three') }}">
                         <b class="fa fa-th-list"></b>
                         <span>{{ _t('backend_cth') }}</span>
@@ -81,7 +81,7 @@
                         <li><a href="{{ route('backend_cth_add') }}">{{ _t('backend_cth_new') }}</a></li>
                     </ul>
                 </li>
-                <li class="about has-children">
+                <li class="about has-children {{ nav_active('product', $active) }}">
                     <a href="{{ route('backend_products') }}">
                         <b class="fa fa-th-list"></b>
                         <span>{{ _t('backend_products') }}</span>
@@ -94,37 +94,37 @@
             </ul>
             <ul>
                 <li class="cd-label">Main menu</li>
-                <li class="about active">
+                <li class="about {{ nav_active('post-about', $active) }}">
                     <a href="{{ route('backend_post_edit', ['slug' => 'about', 'id' => 1]) }}">
                         <b class="fa fa-bullhorn"></b>
                         <span>{{ _t('backend_about') }}</span>
                     </a>
                 </li>
-                <li class="about">
+                <li class="contact {{ nav_active('post-contact', $active) }}">
                     <a href="{{ route('backend_post_edit', ['slug' => 'contact', 'id' => 2]) }}">
                         <b class="fa fa-credit-card"></b>
                         <span>{{ _t('backend_contact') }}</span>
                     </a>
                 </li>
-                <li class="sliders">
+                <li class="sliders {{ nav_active('image-sliders', $active) }}">
                     <a href="{{ route('backend_images', ['slug' => 'sliders']) }}">
                         <b class="fa fa-sliders"></b>
                         <span>{{ _t('backend_sliders') }}</span>
                     </a>
                 </li>
-                <li class="sliders">
+                <li class="sliders {{ nav_active('meta', $active) }}">
                     <a href="{{ route('backend_meta') }}">
                         <b class="fa fa-bookmark-o"></b>
                         <span>{{ _t('backend_meta') }}</span>
                     </a>
                 </li>
-                <li class="sliders">
+                <li class="map {{ nav_active('map', $active) }}">
                     <a href="{{ route('backend_map') }}">
                         <b class="fa fa-map-marker"></b>
                         <span>{{ _t('backend_map') }}</span>
                     </a>
                 </li>
-                <li class="has-children users">
+                <li class="has-children users {{ nav_active('user', $active) }}">
                     <a href="{{ route('backend_users') }}">
                         <b class="glyphicon glyphicon-user"></b>
                         <span>{{ _t('backend_users') }}</span>
@@ -134,7 +134,7 @@
                         <li><a href="{{ route('backend_user_add') }}">{{ _t('backend_user_new') }}</a></li>
                     </ul>
                 </li>
-                <li class="has-children roles">
+                <li class="has-children roles {{ nav_active('role', $active) }}">
                     <a href="{{ route('backend_roles') }}">
                         <b class="fa fa-code-fork"></b>
                         <span>{{ _t('backend_roles') }}</span>
@@ -147,7 +147,7 @@
             </ul>
             <ul>
                 <li class="cd-label">Develop</li>
-                <li class="has-children post-categories">
+                <li class="has-children post-categories {{ nav_active('post-category', $active) }}">
                     <a href="{{ route('backend_post_categories') }}">
                         <b class="fa fa-newspaper-o"></b>
                         <span>{{ _t('backend_pc') }}</span>
@@ -157,7 +157,7 @@
                         <li><a href="{{ route('backend_pc_add') }}">{{ _t('backend_pc_new') }}</a></li>
                     </ul>
                 </li>
-                <li class="has-children post-categories">
+                <li class="has-children post-categories {{ nav_active('image-category', $active) }}">
                     <a href="{{ route('backend_image_categories') }}">
                         <b class="fa fa-image"></b>
                         <span>{{ _t('backend_ic') }}</span>
@@ -167,7 +167,7 @@
                         <li><a href="{{ route('backend_ic_add') }}">{{ _t('backend_ic_new') }}</a></li>
                     </ul>
                 </li>
-                <li class="has-children post-categories">
+                <li class="has-children post-categories {{ nav_active('category-root', $active) }}">
                     <a href="{{ route('backend_category_root') }}">
                         <b class="fa fa-th-list"></b>
                         <span>{{ _t('backend_cr') }}</span>
@@ -179,8 +179,8 @@
                 </li>
             </ul>
             <ul>
-                <li class="cd-label">Action</li>
-                <li class="action-btn"><a href="#0">+ Button</a></li>
+                <li class="cd-label">Quick</li>
+                <li class="action-btn"><a href="{{ route('backend_logout') }}">{{ _t('backend_common_logout') }}</a></li>
             </ul>
         </nav>
 
