@@ -91,6 +91,7 @@ class ProductController extends BackController{
         if ($request->isMethod('POST')) {
 
             $edit        = $request->has('id');
+            $imagePath   = $this->image_path;
             $product     = ($edit) ? $this->_getProductById($request->get('id')) : $this->product;
             $productCopy = clone $product;
             $rules       = $this->product->rules();
@@ -99,11 +100,11 @@ class ProductController extends BackController{
             if ($edit && str_equal($product->slug, $request->get('slug'))) {
                 $rules = remove_rules($rules, ['slug.unique:products,slug']);
             }
-            
+
             if ( ! $edit) {
                 $rules = remove_rules($rules, 'slug.required');
             }
-            
+
             if ($edit && $product->image !== '') {
                 $rules = remove_rules($rules, 'image.required');
             }
@@ -121,28 +122,43 @@ class ProductController extends BackController{
                 $product->generateSlug();
 
                 //Upload image
-                if ($request->hasFile('image')) {
-                    $imagePath = $this->image_path;
-                    $file      = $request->file('image');
-                    $filename  = new FileName($imagePath, $file->getClientOriginalExtension());
-                    $filename->avatar()->generate();
-                    $filename->setPrefix(_const('PRODUCT_PREFIX'));
-                    $filename->avatar()->group($this->_getProductImageGroup(), false);
-                    $upload = new Upload($file);
-                    $upload->setDirectory($imagePath)->setName($filename->getName())->move();
-                    $image = new Image($imagePath . $upload->getName());
-                    $image->setDirectory($imagePath)->resizeGroup($filename->getGroup());
+                foreach ([0] as $one) {
 
-                    delete_file($imagePath . $upload->getName());
-
-                    if ($edit && check_file($imagePath . $productCopy->image)) {
-                        delete_file($imagePath . $productCopy->image);
+                    $fileName = 'image';
+                    if ($one) {
+                        $fileName .= '_' . $one;
                     }
 
-                    $resizes        = $image->getResizes();
-                    $product->image = $resizes['small'];
+                    if ($request->hasFile($fileName)) {
+
+                        $file = $request->file($fileName);
+                        $filename = new FileName($imagePath, $file->getClientOriginalExtension());
+                        $filename->avatar()->generate();
+                        $filename->setPrefix(_const('PRODUCT_PREFIX'));
+                        $filename->avatar()->group($this->_getProductImageGroup(), false);
+                        $upload = new Upload($file);
+                        $upload->setDirectory($imagePath)->setName($filename->getName())->move();
+                        $image = new Image($imagePath . $upload->getName());
+                        $image->setDirectory($imagePath)->resizeGroup($filename->getGroup());
+
+                        delete_file($imagePath . $upload->getName());
+
+                        $resizes = $image->getResizes();
+                        $product->$fileName = json_encode([
+                            'small'  => $resizes['small'],
+                            'medium' => $resizes['medium']
+                        ]);
+
+                        if ($edit) {
+                            $images = json_decode($productCopy->$fileName);
+                            delete_file([
+                                $imagePath . $images->small,
+                                $imagePath . $images->medium,
+                            ]);
+                        }
+                    }
                 }
-                
+
                 $product->save();
 
             } catch (Exception $ex) {
@@ -171,8 +187,18 @@ class ProductController extends BackController{
         $product   = $this->_getProductById($id);
         $imagePath = $this->image_path;
 
-        if (check_file($imagePath . $product->image)) {
-            delete_file($imagePath . $product->image);
+        foreach ([0] as $one) {
+
+            $fileName = 'image';
+            if ($one) {
+                $fileName .= '_' . $one;
+            }
+
+            $images = json_decode($product->$fileName);
+            delete_file([
+                $imagePath . $images->small,
+                $imagePath . $images->medium,
+            ]);
         }
 
         $product->delete();
@@ -238,27 +264,27 @@ class ProductController extends BackController{
             ]
         ];
     }
-    
+
     protected function _getCategory($type = 1) {
-        
+
         $default = ['' => _t('backend_product_pick_cat')];
-        
+
         switch($type) {
-            case 1: 
+            case 1:
                 $categories = CategoryOne::all();
                 break;
             case 2:
                 $categories = CategoryTwo::all();
                 break;
-            case 3: 
+            case 3:
                 $categories = CategoryThree::all();
                 break;
         }
-        
+
         foreach ($categories as $category) {
             $default[$category->id] = $category->name;
         }
-        
+
         return $default;
     }
 }

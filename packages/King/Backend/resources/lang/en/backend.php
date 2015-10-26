@@ -139,7 +139,7 @@ return [
     'backend_map' => 'Google Map',
     'backend_map_desc' => 'Map description',
     'backend_map_save' => 'Save Map Info',
-    
+
     'backend_products' => 'Products',
     'backend_product_list' => 'List All Products',
     'backend_product_category' => 'Category',
@@ -162,6 +162,7 @@ return [
     'backend_p_msg_prireq' => 'Price is required.',
     'backend_p_msg_prinum' => 'Price must be a numeric.',
     'backend_p_msg_oldprinum' => 'Old price must be a numeric.',
+    'backend_product_delete_one' => 'Are you sure to delete this product?',
 
     'backend_common_save' => 'Save Data',
     'backend_common_edit' => 'Edit',
@@ -175,4 +176,6 @@ return [
     'backend_common_saved' => 'Saved data success.',
     'backend_common_deleted' => 'Deleted data success.',
     'backend_common_not_found' => 'Opp! Thing you are trying to reach is not found.',
+    'backend_common_logout' => 'Logout',
+    'backend_common_editacc' => 'Edit Account',
 ];

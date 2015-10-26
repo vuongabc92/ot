@@ -21,6 +21,7 @@ class CategoryTwo extends Base
         return [
             'category_one_id' => 'required|exists:category_one,id',
             'name'            => 'required|max:250',
+            'slug'            => 'max:250|unique:category_two,slug',
             'image'           => 'image',
         ];
     }

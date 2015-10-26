@@ -26,8 +26,9 @@
     </div>
     <div class="form-group">
         <label for="image">{!! error_or_label( _t('backend_product_image'), 'image') !!}</label>
-        @if(check_file($image_path . $product->image))
-            <img src="{{ asset($image_path . $product->image) }}" class="product-image img-responsive _r2"/>
+        @set $images = json_decode($product->image)
+        @if($images !== null && check_file($image_path . $images->small))
+            <img src="{{ asset($image_path . $images->small) }}" class="product-image img-responsive _r2"/>
         @endif
         <div class="_mt10">
             {!! Form::file('image', ['class' => '', 'id' => 'image', 'accept' => 'image/*']) !!}

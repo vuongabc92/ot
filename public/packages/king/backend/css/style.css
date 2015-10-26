@@ -241,9 +241,10 @@ button.auth-btn{height:45px;padding:0 !important;}
 .post-image{width:100px;}
 .default-post-img{width:100px;height:100px;line-height:100px;font-size:20px}
 .default-co-img{width:100px;height:100px;line-height:100px;font-size:20px}
+.default-product-img{width:100px;height:100px;line-height:100px;font-size:20px}
 .default-size{width:100px;}
 .map-field{width:220px;float:left;margin-right:10px;}
-
+.product-image{width:100px;}
 
 
 @media screen and (min-width: 375px) {

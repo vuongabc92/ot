@@ -39,10 +39,8 @@
                         </a>
 
                         <ul>
-
-                            <li><a href="#0">My Account</a></li>
-                            <li><a href="#0">Edit Account</a></li>
-                            <li><a href="{{ route('backend_logout') }}">Logout</a></li>
+                            <li><a href="{{ route('backend_user_edit', user()->id) }}">{{ _t('backend_common_editacc') }}</a></li>
+                            <li><a href="{{ route('backend_logout') }}">{{ _t('backend_common_logout') }}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -118,6 +116,12 @@
                     <a href="{{ route('backend_meta') }}">
                         <b class="fa fa-bookmark-o"></b>
                         <span>{{ _t('backend_meta') }}</span>
+                    </a>
+                </li>
+                <li class="sliders">
+                    <a href="{{ route('backend_map') }}">
+                        <b class="fa fa-map-marker"></b>
+                        <span>{{ _t('backend_map') }}</span>
                     </a>
                 </li>
                 <li class="has-children users">

@@ -122,6 +122,7 @@ class CategoryTwoController extends BackController{
                 $categoryTwo = $this->bind($categoryTwo, $request->all());
                  if ( ! $edit) {$categoryTwo->created_at = new \DateTime();}
                 $categoryTwo->updated_at = new \DateTime();
+                $categoryTwo->generateSlug();
 
                 //Upload image
                 if ($request->hasFile('image')) {

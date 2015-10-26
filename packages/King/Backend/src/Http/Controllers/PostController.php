@@ -114,6 +114,7 @@ class PostController extends BackController{
                 if ( ! $edit) {$post->created_at = new \DateTime();}
                 $post->updated_at       = new \DateTime();
                 $post->post_category_id = $category->id;
+                $post->generateSlug();
 
                 //Upload image
                 if ($request->hasFile('image')) {

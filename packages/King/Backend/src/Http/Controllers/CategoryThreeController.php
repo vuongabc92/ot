@@ -122,6 +122,7 @@ class CategoryThreeController extends BackController{
                 $categoryThree = $this->bind($categoryThree, $request->all());
                  if ( ! $edit) {$categoryThree->created_at = new \DateTime();}
                 $categoryThree->updated_at = new \DateTime();
+                $categoryThree->generateSlug();
 
                 //Upload image
                 if ($request->hasFile('image')) {

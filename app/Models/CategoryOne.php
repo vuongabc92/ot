@@ -20,7 +20,9 @@ class CategoryOne extends Base
     public function rules() {
         return [
             'name'  => 'required|max:250',
+            'slug'  => 'max:250|unique:category_one,slug',
             'image' => 'image',
+
         ];
     }
 

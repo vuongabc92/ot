@@ -121,8 +121,9 @@ class CategoryOneController extends BackController{
             try {
                 $categoryOne = $this->bind($categoryOne, $request->all());
                  if ( ! $edit) {$categoryOne->created_at = new \DateTime();}
-                $categoryOne->updated_at        = new \DateTime();
+                $categoryOne->updated_at       = new \DateTime();
                 $categoryOne->category_root_id = $category->id;
+                $categoryOne->generateSlug();
 
                 //Upload image
                 if ($request->hasFile('image')) {

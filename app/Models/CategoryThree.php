@@ -21,6 +21,7 @@ class CategoryThree extends Base
         return [
             'category_two_id' => 'required|exists:category_two,id',
             'name'            => 'required|max:250',
+            'slug'            => 'max:250|unique:category_three,slug',
             'image'           => 'image',
         ];
     }
