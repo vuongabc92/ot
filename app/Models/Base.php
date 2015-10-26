@@ -12,4 +12,20 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class Base extends Model {
 
+    public function generateSlug($i = '') {
+        
+        $slug = str_slug($this->name) . $i;
+        if ($this->slug !== null) {
+            $find = $this->where('slug', $slug)->where('slug', '!=', $this->slug)->first();
+        } else {
+            $find = $this->where('slug', $slug)->first();
+        }
+        
+        while ($find !== null) {
+            $i    = ((int) $i) + 1;
+            $slug = $this->generateSlug($i);
+        }
+        
+        $this->slug = $slug;
+    }
 }

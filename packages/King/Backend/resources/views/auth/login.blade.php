@@ -19,7 +19,7 @@
 
         <div class="container-fluid">
             <div class="auth-container _p0">
-                <form class="_fwfl _r2" action="{{ route('backend_login') }}" method="POST">
+                <form class="_fwfl" action="{{ route('backend_login') }}" method="POST">
                     {!! csrf_field() !!}
                     <h3>
                         {{ _t('backend_auth_login') }}

@@ -16,7 +16,7 @@ class CreateCategoryThreeTable extends Migration
             $table->increments('id');
             $table->integer('category_two_id')->unsigned();
             $table->string('name', 250);
-            $table->string('image', 250);
+            $table->string('image', 250)->nullable();
             $table->boolean('is_active')->default(1);
             $table->timestamps();
 

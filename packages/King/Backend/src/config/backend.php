@@ -9,6 +9,7 @@ return [
     'image_one_path'     => 'uploads/category_one/',
     'image_two_path'     => 'uploads/category_two/',
     'image_three_path'   => 'uploads/category_three/',
+    'products_path'      => 'uploads/products/',
     'default_pagination' => 20,
     'map_key'            => 'map_data',
     'default_longitude'  => '106.6490020765923',

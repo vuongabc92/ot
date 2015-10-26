@@ -73,23 +73,43 @@
                         <li><a href="{{ route('backend_ct_add') }}">{{ _t('backend_ct_new') }}</a></li>
                     </ul>
                 </li>
+                <li class="about has-children">
+                    <a href="{{ route('backend_category_three') }}">
+                        <b class="fa fa-th-list"></b>
+                        <span>{{ _t('backend_cth') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_category_three') }}">{{ _t('backend_cth_list') }}</a></li>
+                        <li><a href="{{ route('backend_cth_add') }}">{{ _t('backend_cth_new') }}</a></li>
+                    </ul>
+                </li>
+                <li class="about has-children">
+                    <a href="{{ route('backend_products') }}">
+                        <b class="fa fa-th-list"></b>
+                        <span>{{ _t('backend_products') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_products') }}">{{ _t('backend_product_list') }}</a></li>
+                        <li><a href="{{ route('backend_product_add') }}">{{ _t('backend_product_new') }}</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul>
                 <li class="cd-label">Main menu</li>
                 <li class="about active">
-                    <a href="{{ route('backend_post_edit', ['slug' => 'about', 'id' => 4]) }}">
+                    <a href="{{ route('backend_post_edit', ['slug' => 'about', 'id' => 1]) }}">
                         <b class="fa fa-bullhorn"></b>
                         <span>{{ _t('backend_about') }}</span>
                     </a>
                 </li>
                 <li class="about">
-                    <a href="{{ route('backend_post_edit', ['slug' => 'contact', 'id' => 5]) }}">
+                    <a href="{{ route('backend_post_edit', ['slug' => 'contact', 'id' => 2]) }}">
                         <b class="fa fa-credit-card"></b>
                         <span>{{ _t('backend_contact') }}</span>
                     </a>
                 </li>
                 <li class="sliders">
-                    <a href="{{ route('backend_images', ['slug' => 'carousel']) }}">
+                    <a href="{{ route('backend_images', ['slug' => 'sliders']) }}">
                         <b class="fa fa-sliders"></b>
                         <span>{{ _t('backend_sliders') }}</span>
                     </a>
@@ -143,6 +163,16 @@
                         <li><a href="{{ route('backend_ic_add') }}">{{ _t('backend_ic_new') }}</a></li>
                     </ul>
                 </li>
+                <li class="has-children post-categories">
+                    <a href="{{ route('backend_category_root') }}">
+                        <b class="fa fa-th-list"></b>
+                        <span>{{ _t('backend_cr') }}</span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('backend_category_root') }}">{{ _t('backend_cr_list') }}</a></li>
+                        <li><a href="{{ route('backend_cr_add') }}">{{ _t('backend_cr_new') }}</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul>
                 <li class="cd-label">Action</li>
@@ -151,7 +181,7 @@
         </nav>
 
         <div class="content-wrapper">
-            <div class="_fwfl _mt20 king-content">
+            <div class="_fwfl _mt20 _mb20 king-content">
                 @yield('content')
             </div>
         </div> <!-- .content-wrapper -->

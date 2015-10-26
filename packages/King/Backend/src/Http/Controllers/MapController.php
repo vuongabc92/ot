@@ -24,11 +24,19 @@ class MapController extends BackController{
         if ($option !== null) {
             $mapData = json_decode($option->value, true);
         }
-//        dd($option->value);
+
         return view('backend::map.index', ['map_data' => $mapData]);
     }
 
+    /**
+     * Save map info
+     * 
+     * @param \Illuminate\Http\Request $request
+     * 
+     * @return response
+     */
     public function save(Request $request) {
+        
         if ($request->isMethod('POST')) {
 
             $mapLong   = $request->get('map_long');
@@ -39,13 +47,13 @@ class MapController extends BackController{
                 'map_lat'    => $mapLat,
                 'map_widget' => $mapWidget
             ];
-
+            
             $option = Option::where('key', config('back.map_key'))->first();
 
             if ($option === null) {
                 $option = new Option;
             }
-
+            
             $option->key   = config('back.map_key');
             $option->value = json_encode($mapArray, JSON_UNESCAPED_UNICODE);
             
