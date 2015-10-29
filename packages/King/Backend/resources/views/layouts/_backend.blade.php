@@ -216,7 +216,11 @@
             toolbar4: "",
             fontsize_formats: "7px 8px 9px 10px 11px 12px 13px 14px 15px 16px 17px 18px 19px 20px 22px 24px 36px 40px"
         });
-        //backcolor
+
+        $('#check-all').on('click', function(){
+            var checkBoxes = $("input[name=list_checked\\[\\]]");
+            checkBoxes.prop("checked", this.checked);
+        });
     </script>
 
 </body>

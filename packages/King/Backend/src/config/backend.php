@@ -14,4 +14,5 @@ return [
     'map_key'            => 'map_data',
     'default_longitude'  => '106.6490020765923',
     'default_latitude'   => '10.807677375271169',
+    'product_images'     => [0]
 ];

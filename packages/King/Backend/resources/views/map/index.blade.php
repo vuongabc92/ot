@@ -5,7 +5,6 @@
 @stop
 
 @section('content')
-backend_map_save
 <h3 class="_tg6 _fs20">{{ _t('backend_map') }}</h3>
 <hr />
 <div class="_fwfl">

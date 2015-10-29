@@ -27,6 +27,7 @@ class Product extends Base
             'image'       => 'required|image',
             'price'       => 'required|numeric',
             'old_price'   => 'numeric',
+            'weight'      => 'numeric',
         ];
     }
 
@@ -49,6 +50,7 @@ class Product extends Base
             'price.required'       => _t('backend_p_msg_prireq'),
             'price.numeric'        => _t('backend_p_msg_prinum'),
             'old_price.numeric'    => _t('backend_p_msg_oldprinum'),
+            'weight.numeric'       => _t('backend_p_msg_weinum'),
         ];
     }
 
@@ -60,7 +62,7 @@ class Product extends Base
     public function categoryOne() {
         return $this->belongsTo('App\Models\CategoryOne');
     }
-    
+
     /**
      * Category Two
      *
@@ -69,7 +71,7 @@ class Product extends Base
     public function categoryTwo() {
         return $this->belongsTo('App\Models\CategoryTwo');
     }
-    
+
     /**
      * Category Three
      *

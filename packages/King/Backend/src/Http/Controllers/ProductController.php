@@ -17,11 +17,15 @@ use Validator;
 /**
  * Product Controller
  */
-class ProductController extends BackController{
+class ProductController extends BackController implements BackInterface{
 
-    private $product;
 
-    private $image_path;
+    private $_product;
+
+    private $_imagePath;
+
+    private $_productImages;
+
     /**
      * Constructor
      *
@@ -29,8 +33,13 @@ class ProductController extends BackController{
      */
     public function __construct(Product $product)
     {
-        $this->product    = $product;
-        $this->image_path = config('back.products_path');
+        $this->_product       = $product;
+        $this->_imagePath     = config('back.products_path');
+        $this->_productImages = config('back.product_images');
+
+        $this->object = $product;
+        $this->imagePath = config('back.products_path');
+        $this->view = 'backend::product.';
     }
 
 
@@ -40,12 +49,11 @@ class ProductController extends BackController{
      * @return response
      */
     public function index() {
+        $products = $this->_product->orderBy('weight', 'DESC')->paginate(config('back.default_pagination'));
 
-        $products = Product::paginate(config('back.default_pagination'));
-        
         return view('backend::product.index', [
             'products'   => $products,
-            'image_path' => $this->image_path
+            'image_path' => $this->_imagePath
         ]);
     }
 
@@ -57,9 +65,9 @@ class ProductController extends BackController{
     public function add() {
 
         return view('backend::product.form', [
-            'product'    => $this->product,
+            'product'    => $this->_product,
             'categories' => $this->_getCategory(2),
-            'image_path' => $this->image_path
+            'image_path' => $this->_imagePath
         ]);
     }
 
@@ -73,7 +81,7 @@ class ProductController extends BackController{
         return view('backend::product.form', [
             'product'    => $this->_getProductById($id),
             'categories' => $this->_getCategory(2),
-            'image_path' => $this->image_path
+            'image_path' => $this->_imagePath
         ]);
     }
 
@@ -91,11 +99,11 @@ class ProductController extends BackController{
         if ($request->isMethod('POST')) {
 
             $edit        = $request->has('id');
-            $imagePath   = $this->image_path;
-            $product     = ($edit) ? $this->_getProductById($request->get('id')) : $this->product;
+            $imagePath   = $this->_imagePath;
+            $product     = ($edit) ? $this->_getProductById($request->get('id')) : $this->_product;
             $productCopy = clone $product;
-            $rules       = $this->product->rules();
-            $messages    = $this->product->messages();
+            $rules       = $this->_product->rules();
+            $messages    = $this->_product->messages();
 
             if ($edit && str_equal($product->slug, $request->get('slug'))) {
                 $rules = remove_rules($rules, ['slug.unique:products,slug']);
@@ -122,7 +130,7 @@ class ProductController extends BackController{
                 $product->generateSlug();
 
                 //Upload image
-                foreach ([0] as $one) {
+                foreach ($this->_productImages as $one) {
 
                     $fileName = 'image';
                     if ($one) {
@@ -175,7 +183,7 @@ class ProductController extends BackController{
      * @param int    $id
      * @param string $token
      *
-     * @return type
+     * @return Response
      * @throws TokenMismatchException
      */
     public function delete($id, $token) {
@@ -185,9 +193,9 @@ class ProductController extends BackController{
         }
 
         $product   = $this->_getProductById($id);
-        $imagePath = $this->image_path;
+        $imagePath = $this->_imagePath;
 
-        foreach ([0] as $one) {
+        foreach ($this->_productImages as $one) {
 
             $fileName = 'image';
             if ($one) {
@@ -207,11 +215,48 @@ class ProductController extends BackController{
     }
 
     /**
+     * Delete list selected users
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function deleteSelected(Request $request) {
+
+        if($request->isMethod('POST')) {
+
+            $ids       = $request->get('list_checked');
+            $products  = Product::whereIn('id', $ids)->get();
+            $imagePath = $this->_imagePath;
+
+            foreach ($products as $product) {
+                foreach ([0] as $one) {
+
+                    $fileName = 'image';
+                    if ($one) {
+                        $fileName .= '_' . $one;
+                    }
+
+                    $images = json_decode($product->$fileName);
+                    delete_file([
+                        $imagePath . $images->small,
+                        $imagePath . $images->medium,
+                    ]);
+                }
+
+                $product->delete()->with('success', _t('backend_common_deleted'));;
+            }
+        }
+
+        return redirect(route('backend_products'));
+    }
+
+    /**
      * Toggle show hide product
      *
      * @param int $id
      *
-     * @return response
+     * @return Response
      */
     public function toggleShowHide($id) {
 
@@ -238,7 +283,7 @@ class ProductController extends BackController{
      */
     protected function _getProductById($id) {
 
-        $product = $this->product->find((int) $id);
+        $product = $this->_product->find((int) $id);
 
         if ($product === null) {
             throw new NotFoundHttpException;

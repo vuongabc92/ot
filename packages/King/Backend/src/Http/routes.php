@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::post('/category-three/save', ['as' => 'backend_cth_save', 'uses' => 'CategoryThreeController@save']);
     Route::get('/category-three/{id}/delete/{token}', ['as' => 'backend_cth_delete', 'uses' => 'CategoryThreeController@delete']);
     Route::get('/category-three/{id}/toggle-show-hide', ['as' => 'backend_cth_active', 'uses' => 'CategoryThreeController@toggleShowHide']);
-    
+
     //Product
     Route::get('/products', ['as' => 'backend_products', 'uses' => 'ProductController@index']);
     Route::get('/product/add', ['as' => 'backend_product_add', 'uses' => 'ProductController@add']);
@@ -106,4 +106,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::post('/product/save', ['as' => 'backend_product_save', 'uses' => 'ProductController@save']);
     Route::get('/product/{id}/delete/{token}', ['as' => 'backend_product_delete', 'uses' => 'ProductController@delete']);
     Route::get('/product/{id}/toggle-show-hide', ['as' => 'backend_product_active', 'uses' => 'ProductController@toggleShowHide']);
+    Route::post('/product/delete-selected', ['as' => 'backend_product_delete_selected', 'uses' => 'ProductController@deleteSelected']);
 });

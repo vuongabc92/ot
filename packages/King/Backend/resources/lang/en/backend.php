@@ -2,7 +2,7 @@
 
 return [
     'backend_dashboard' => 'Dashboard',
-    
+
     'backend_auth_login' => 'LOG  IN',
     'backend_auth_uname' => 'User name',
     'backend_auth_email' => 'Email',
@@ -151,6 +151,7 @@ return [
     'backend_product_name' => 'Name',
     'backend_product_slug' => 'Slug',
     'backend_product_image' => 'Image',
+    'backend_product_weight' => 'Weight',
     'backend_product_content' => 'Content',
     'backend_product_price' => 'Price',
     'backend_product_new' => 'Add New Product',
@@ -166,6 +167,7 @@ return [
     'backend_p_msg_prireq' => 'Price is required.',
     'backend_p_msg_prinum' => 'Price must be a numeric.',
     'backend_p_msg_oldprinum' => 'Old price must be a numeric.',
+    'backend_p_msg_weinum' => 'Weight must be a numeric.',
     'backend_product_delete_one' => 'Are you sure to delete this product?',
 
     'backend_common_save' => 'Save Data',

@@ -1,7 +1,7 @@
 @extends('backend::layouts._backend', ['active' => 'product'])
 
 @section('title')
-    @if($product->id !== null) 
+    @if($product->id !== null)
         {{ _t('backend_products') }} > {{ _t('backend_common_edit') }} |
     @else
         {{ _t('backend_products') }} > {{ _t('backend_common_add') }} |
@@ -41,6 +41,10 @@
         <div class="_mt10">
             {!! Form::file('image', ['class' => '', 'id' => 'image', 'accept' => 'image/*']) !!}
         </div>
+    </div>
+    <div class="form-group">
+        <label for="weight">{!! error_or_label( _t('backend_product_weight'), 'weight') !!}</label>
+        {!! Form::text('weight', null, ['class' => 'form-control', 'id' => 'weight', 'placeholder' => _t('backend_product_weight')]) !!}
     </div>
     <div class="form-group">
         <label for="_tinymce">{!! error_or_label( _t('backend_product_content'), 'content') !!}</label>
