@@ -6,9 +6,54 @@ use Illuminate\Http\Request;
 
 trait Back {
 
-    public $object;
-    public $imagePath;
-    public $view;
+    private $_object;
+    private $_image;
+    private $_view;
+    private $_paging;
+
+    public function setObject($object) {
+
+        $this->_object = $object;
+
+        return $this;
+    }
+
+    public function getObject() {
+        return $this->_object;
+    }
+
+    public function setImage($image) {
+
+        $this->_image = $image;
+
+        return $this;
+    }
+
+    public function getImagePath() {
+        return $this->_imagePath;
+    }
+
+    public function setView($view) {
+
+        $this->_view = $view;
+
+        return $this;
+    }
+
+    public function getView() {
+        return $this->_view;
+    }
+
+    public function setPaging($paging) {
+
+        $this->_paging = $paging;
+
+        return $this;
+    }
+
+    public function getPaging() {
+        return $this->_paging;
+    }
 
     /**
      * Listing all objects
@@ -17,13 +62,13 @@ trait Back {
      */
     public function index() {
 
-        $pagingConfig = $this->getPagingConfig();
-        $object       = $this->object->orderBy('weight', 'DESC')->paginate($pagingConfig);
-        $view         = $this->view . 'index';
+        $paging = $this->getPaging();
+        $object = $this->_object->orderBy('weight', 'DESC')->paginate($paging);
+        $view   = $this->_view . '.index';
 
         return view($view, [
-            'data'       => $object,
-            'image_path' => $this->imagePath
+            'lists'      => $object,
+            'image_path' => $this->_image
         ]);
     }
 
@@ -60,7 +105,7 @@ trait Back {
      *
      * @return Response
      */
-public function delete($id, $token){}
+    public function delete($id, $token){}
 
     /**
      * Deleting list objects
@@ -80,12 +125,4 @@ public function delete($id, $token){}
      */
     public function toggleShowHide($id){}
 
-    /**
-     * Get paging config
-     *
-     * @return int
-     */
-    public function getPagingConfig() {
-        return config('back.default_pagination');
-    }
 }

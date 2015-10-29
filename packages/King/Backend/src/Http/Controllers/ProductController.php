@@ -19,6 +19,7 @@ use Validator;
  */
 class ProductController extends BackController implements BackInterface{
 
+    use Back;
 
     private $_product;
 
@@ -33,28 +34,11 @@ class ProductController extends BackController implements BackInterface{
      */
     public function __construct(Product $product)
     {
-        $this->_product       = $product;
-        $this->_imagePath     = config('back.products_path');
+        $this->setObject($product);
+        $this->setImage(config('back.products_path'));
+        $this->setView('backend::product');
+
         $this->_productImages = config('back.product_images');
-
-        $this->object = $product;
-        $this->imagePath = config('back.products_path');
-        $this->view = 'backend::product.';
-    }
-
-
-    /**
-     * List all products
-     *
-     * @return response
-     */
-    public function index() {
-        $products = $this->_product->orderBy('weight', 'DESC')->paginate(config('back.default_pagination'));
-
-        return view('backend::product.index', [
-            'products'   => $products,
-            'image_path' => $this->_imagePath
-        ]);
     }
 
     /**

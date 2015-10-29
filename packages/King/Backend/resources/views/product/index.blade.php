@@ -33,7 +33,7 @@
         </thead>
         <tbody>
             @set $i = 0
-            @foreach($products as $product)
+            @foreach($lists as $product)
                 @set $i = $i + 1
                 @set $images = json_decode($product->image)
             <tr>
